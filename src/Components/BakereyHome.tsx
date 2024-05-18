@@ -15,7 +15,7 @@ const BakereyHome = () => {
   
     return (
       <View style={styles.container}>
-          <Text style={styles.title}>Top Barkeries</Text>
+          <Text style={styles.title}>Popular Bakries</Text>
          <FlatList
           data={bakeries}
           renderItem={renderItem}

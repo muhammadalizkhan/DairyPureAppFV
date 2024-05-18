@@ -1,20 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faHeart, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const BakeryHeader = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container} >
+    <View style={styles.container}>
     <View style={styles.header}>
-      <FontAwesomeIcon icon={faChevronLeft} size={25} style={styles.icon} />
+      <TouchableOpacity onPress={() => navigation.goBack()}><FontAwesomeIcon icon={faChevronLeft} size={30} style={styles.icon} /></TouchableOpacity>
+      <Text style={styles.Title}>Bakries</Text>
       <View style={styles.rightIcons}>
         <FontAwesomeIcon icon={faMagnifyingGlass} size={25} style={styles.icon} />
         <FontAwesomeIcon icon={faHeart} size={25} style={styles.icon} />
       </View>
-    </View>
-    <View>
-      <Text style={styles.Title}>Bakery Items</Text>
     </View>
   </View>
   )
@@ -24,17 +25,13 @@ export default BakeryHeader
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#49243E',
-        height: 100,
-        borderBottomRightRadius: 10,
-        borderBottomLeftRadius: 10,
       },
       Title:{
-        fontSize: 20,
-        color: 'white',
+        fontSize: 30,
+        color: '#49243E',
         fontFamily: 'system-ui',
         fontWeight: 'bold',
-        marginLeft: 25,
+        marginRight: 200,
       },
       header: {
         flexDirection: 'row',
@@ -43,8 +40,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
       },
       icon: {
-        color: 'white',
-        marginHorizontal: 10,
+        color: '#49243E',
+        marginHorizontal: 5,
       },
       rightIcons: {
         flexDirection: 'row',

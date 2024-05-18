@@ -7,14 +7,14 @@ const BestChoice = () => {
     <View>
       <Text style={styles.title}>Best Choice</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {cattleFarms.slice(0, 2).map((farm) => (
-          <View key={farm.id} style={styles.slide}>
-            <Image style={styles.img} source={farm.image} />
-          </View>
-        ))}
         {bakeries.slice(0, 2).map((bakery) => (
           <View key={bakery.id} style={styles.slide}>
             <Image style={styles.img} source={bakery.image} />
+          </View>
+        ))}
+          {cattleFarms.slice(0, 2).map((farm) => (
+          <View key={farm.id} style={styles.slide}>
+            <Image style={styles.img} source={farm.image} />
           </View>
         ))}
       </ScrollView>

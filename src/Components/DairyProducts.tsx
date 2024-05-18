@@ -11,7 +11,6 @@ const DairyProducts: React.FC = () => {
         </View>
     );
     return (
-            <View>
                 <ScrollView>
                    {products.map((product) => (
                     <View key={product.id} style={styles.CattelProducts}>
@@ -36,9 +35,7 @@ const DairyProducts: React.FC = () => {
                         </View>
                     </View>
                 ))}
-            </ScrollView>
-        </View>
-    )
+            </ScrollView>    )
 }
 
 export default DairyProducts

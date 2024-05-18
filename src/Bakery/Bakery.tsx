@@ -5,8 +5,6 @@ import SearchBar from '../Components/SearchBar'
 import BakereyHome from '../Components/BakereyHome'
 import TopBarkiers from '../Components/TopBarkiers'
 import GetRegister from '../Components/GetRegister'
-import AppProducts from '../Components/AppProducts'
-import Products from '../Products/Products'
 
 const Bakery = () => {
   return (
@@ -15,7 +13,6 @@ const Bakery = () => {
       <SearchBar />
       <BakereyHome />
       <TopBarkiers />
-      <GetRegister />
     </ScrollView>
   )
 }

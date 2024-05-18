@@ -6,9 +6,8 @@ import { faLocationCrosshairs, faMoneyBill, faMotorcycle, faStar } from '@fortaw
 
 const { width } = Dimensions.get('window');
 
-const TopFarms = ({navigation}:any) => {
+const TopFarms = ({ navigation }: any) => {
     const scrollX = React.useRef(new Animated.Value(0)).current;
-
     const renderItem = ({ item }: { item: TopCattelFarms }) => (
       <View style={styles.slide}>
         <Image style={styles.img} source={item.image} />
@@ -54,7 +53,7 @@ const TopFarms = ({navigation}:any) => {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Top Cattel Farms</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('FarmInfo')}>
+        <Pressable onPress={() => navigation.navigate('FarmInfo')}>
         <FlatList
           data={topCattelFarms}
           renderItem={renderItem}
@@ -70,7 +69,7 @@ const TopFarms = ({navigation}:any) => {
           snapToInterval={width * 0.7 + 20}
           decelerationRate="fast"
         />
-        </TouchableOpacity>
+        </Pressable>
       </View>
     )
 }

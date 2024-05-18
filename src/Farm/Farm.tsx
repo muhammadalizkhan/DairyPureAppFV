@@ -7,14 +7,16 @@ import SearchBar from '../Components/SearchBar'
 import TopFarms from './TopFarms'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import AppProducts from '../Components/AppProducts'
+import { useNavigation } from '@react-navigation/native';
 
 const Farm = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaProvider>
        <ScrollView style={styles.container} >
         <FarmHeader />
         <SearchBar />
-        <TopFarms />
+        <TopFarms   navigation={navigation}/>
         <AppProducts />
         <FarmList />
         <FarmNearYou />
