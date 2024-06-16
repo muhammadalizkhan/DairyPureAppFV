@@ -2,15 +2,22 @@ import { StyleSheet, Text, Image, TextInput, View, TouchableOpacity } from 'reac
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faBars, faCartShopping, faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { useNavigation } from '@react-navigation/native';
+
 
 const Header = () => {
+  const navigation = useNavigation();
+
+  const openDrawer = () => {
+    navigation.openDrawer();
+  };
   return (
     <View>
       <View style={styles.container}>
       <View style={styles.textContainer}>
-      <TouchableOpacity>
-        <FontAwesomeIcon icon={faBars} style={styles.icon}/>
-      </TouchableOpacity>
+      <TouchableOpacity onPress={openDrawer}>
+          <FontAwesomeIcon icon={faBars} style={styles.icon} />
+        </TouchableOpacity>
         <View>
           <TouchableOpacity>
             <Text style={styles.mainText}>113 Johar Town</Text>
