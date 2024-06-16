@@ -1,11 +1,11 @@
-import { SafeAreaView, StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faChevronLeft, faClockRotateLeft, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
-import StepIndicator from 'react-native-step-indicator'
-import AppProducts from '../Components/AppProducts'
+import React from 'react';
+import { SafeAreaView, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView, ImageSourcePropType } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faChevronLeft, faClockRotateLeft, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import StepIndicator from 'react-native-step-indicator';
 
-const Cart = ({navigation}: any) => {
+const Cart = ({ navigation, route }: any) => {
+  const { cart } = route.params;
   const labels = ["Menu", "Cart", "Checkout"];
   const customStyles = {
     stepIndicatorSize: 20,
@@ -28,16 +28,22 @@ const Cart = ({navigation}: any) => {
     stepIndicatorLabelUnFinishedColor: '#aaaaaa',
     labelColor: '#999999',
     labelSize: 15,
-    currentStepLabelColor: '#49243E'
+    currentStepLabelColor: '#49243E',
   };
+
+  const calculateTotalPrice = () => {
+    return cart.reduce((total: number, item: { quantityPrice: { eachprice: string; }; }) => total + parseFloat(item.quantityPrice.eachprice.replace('RS-', '')), 0);
+  };
+
+  const totalDiscount = 100;
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <View style={styles.header}>
-          <View>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <FontAwesomeIcon icon={faChevronLeft} size={25} style={styles.icon} />
-          </View>
+          </TouchableOpacity>
           <View>
             <Text style={styles.title}>Cart Page</Text>
             <Text style={[styles.farmName, styles.bold]}>Australlian Cattel Farm - Lahore</Text>
@@ -45,7 +51,7 @@ const Cart = ({navigation}: any) => {
         </View>
         <StepIndicator
           customStyles={customStyles}
-          currentPosition={3}
+          currentPosition={1}
           labels={labels}
         />
         <View style={styles.deliveryTime}>
@@ -56,88 +62,59 @@ const Cart = ({navigation}: any) => {
             <Text>Estimate Delivery Time</Text>
             <Text>Now (30-40min)</Text>
           </View>
-          <View><Text>Change</Text></View>
+          <TouchableOpacity onPress={() => console.log('Change delivery time clicked')}>
+            <Text>Change</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.cartProductSection}>
-          <View>
-            <Image 
-              source={require('../assets/Images/Milk.jpg')}
-              style={styles.productImg}
-            />
-          </View>
-          <View style={styles.productDetails}>
-            <Text style={[styles.farmName, styles.bold]}>Australlian Cattel Farm - Lahore</Text>
-            <Text style={styles.productInfo}>2KG | Butter</Text>
-            <Text style={[styles.productInfo, styles.organicText]}>Organic Dairy Products</Text>
-            <View style={styles.price}>
-              <Text style={styles.priceText}>RS-1200</Text>
-              <View style={styles.addRemoveIcon}>
-                <FontAwesomeIcon icon={faPlus} size={15} />
-                <FontAwesomeIcon icon={faMinus} size={15} />
+        <ScrollView>
+          {cart.map((item: { product: { image: ImageSourcePropType | undefined; name: string; }; quantityPrice: { quantity: string; eachprice: string; }; }, index: number) => (
+            <View key={index} style={styles.cartProductSection}>
+              <View>
+                <Image
+                  source={item.product.image}
+                  style={styles.productImg}
+                />
+              </View>
+              <View style={styles.productDetails}>
+                <Text style={[styles.productName, styles.bold]}>{item.product.name}</Text>
+                <Text style={styles.productInfo}>Quantity: {item.quantityPrice.quantity}</Text>
+                <Text style={styles.productInfo}>Type: Organic Dairy Products</Text>
+                <View style={styles.price}>
+                  <Text style={styles.priceText}>Price: {item.quantityPrice.eachprice}</Text>
+                  <View style={styles.addRemoveIcon}>
+                    <TouchableOpacity style={styles.iconButton}>
+                      <FontAwesomeIcon icon={faPlus} size={15} style={styles.addRemoveIconPlus} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.iconButton}>
+                      <FontAwesomeIcon icon={faMinus} size={15} style={styles.addRemoveIconMinus} />
+                    </TouchableOpacity>
+                  </View>
+                </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View style={styles.cartProductSection}>
-          <View>
-            <Image 
-              source={require('../assets/Images/Milk.jpg')}
-              style={styles.productImg}
-            />
-          </View>
-          <View style={styles.productDetails}>
-            <Text style={[styles.farmName, styles.bold]}>Australlian Cattel Farm - Lahore</Text>
-            <Text style={styles.productInfo}>2KG | Butter</Text>
-            <Text style={[styles.productInfo, styles.organicText]}>Organic Dairy Products</Text>
-            <View style={styles.price}>
-              <Text style={styles.priceText}>RS-1200</Text>
-              <View style={styles.addRemoveIcon}>
-                <FontAwesomeIcon icon={faPlus} size={15} />
-                <FontAwesomeIcon icon={faMinus} size={15} />
-              </View>
-            </View>
-          </View>
-        </View>
-        <View style={styles.cartProductSection}>
-          <View>
-            <Image 
-              source={require('../assets/Images/Milk.jpg')}
-              style={styles.productImg}
-            />
-          </View>
-          <View style={styles.productDetails}>
-            <Text style={[styles.farmName, styles.bold]}>Australlian Cattel Farm - Lahore</Text>
-            <Text style={styles.productInfo}>2KG | Butter</Text>
-            <Text style={[styles.productInfo, styles.organicText]}>Organic Dairy Products</Text>
-            <View style={styles.price}>
-              <Text style={styles.priceText}>RS-1200</Text>
-              <View style={styles.addRemoveIcon}>
-                <FontAwesomeIcon icon={faPlus} size={15} />
-                <FontAwesomeIcon icon={faMinus} size={15} />
-              </View>
-            </View>
-          </View>
-        </View>
-        <Text style={styles.AddMoreItem}>Add More Item</Text>
-        <AppProducts />
+          ))}
+        </ScrollView>
+        <TouchableOpacity style={styles.addMoreButton} onPress={() => console.log('Add more item clicked')}>
+          <Text style={styles.addMoreButtonText}>Add More Item</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.footer}>
-            <View>
-              <Text style={styles.proceedButtonText}>Total Price (incl VAT): RS-3000</Text>
-              <Text style={styles.proceedButtonText}>Total Discount: RS-500</Text>
-            </View>
-            <TouchableOpacity  
-              style={styles.proceedButton}
-              onPress={() => navigation.navigate('Checkout')}
-            >
-              <Text style={styles.proceedButtonText}>Proceed to Checkout</Text>
-            </TouchableOpacity>
-          </View>
+        <View>
+          <Text style={styles.footerText}>Total Price (incl VAT): RS-{calculateTotalPrice()}</Text>
+          <Text style={styles.footerText}>Total Discount: RS-{totalDiscount}</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.proceedButton}
+          onPress={() => navigation.navigate('Checkout')}
+        >
+          <Text style={styles.proceedButtonText}>Proceed to Checkout</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
 
 const styles = StyleSheet.create({
   container: {
@@ -147,12 +124,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: 10,
-  },
-  AddMoreItem:{
-    marginTop: 10,
-    color: 'black',
-    fontWeight: 'bold',
-    margin: 20,
   },
   header: {
     flexDirection: 'row',
@@ -181,7 +152,6 @@ const styles = StyleSheet.create({
   deliveryTime: {
     flexDirection: 'row',
     width: '95%',
-    alignContent: 'center',
     alignSelf: 'center',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -203,45 +173,71 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   cartProductSection: {
-    marginTop: 10,
     flexDirection: 'row',
-    justifyContent: 'center',
-    width: '90%',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 2,
   },
   productImg: {
     width: 100,
     height: 100,
     borderRadius: 10,
-    elevation: 5,
+    marginRight: 15,
   },
   productDetails: {
+    flex: 1,
     flexDirection: 'column',
-    marginTop: 10,
     justifyContent: 'space-between',
-    marginLeft: 10,
+  },
+  productName: {
+    fontSize: 18,
+    color: '#265073',
+    marginBottom: 5,
   },
   productInfo: {
     fontSize: 15,
+    color: '#666666',
   },
   organicText: {
-    color: 'black',
+    color: '#8BC34A',
     fontWeight: 'bold',
+    marginTop: 5,
   },
   price: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginTop: 10,
   },
   priceText: {
     fontWeight: 'bold',
+    fontSize: 16,
+    color: '#49243E',
   },
   addRemoveIcon: {
     flexDirection: 'row',
-    backgroundColor: 'white',
-    borderRadius: 4,
-    padding: 5,
-    width: 50,
-    justifyContent: "space-evenly",
-    marginLeft: 120,
+    marginLeft: 'auto',
+  },
+  iconButton: {
+    backgroundColor: '#eee',
+    borderRadius: 5,
+    padding: 8,
+    marginLeft: 5,
+  },
+  addRemoveIconPlus: {
+    color: '#8BC34A',
+  },
+  addRemoveIconMinus: {
+    color: '#F44336',
   },
   footer: {
     flexDirection: 'row',
@@ -269,11 +265,23 @@ const styles = StyleSheet.create({
   },
   proceedButton: {
     backgroundColor: '#265073',
-    padding: 15,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
     borderRadius: 10,
     alignItems: 'center',
   },
   proceedButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  addMoreButton: {
+    backgroundColor: '#265073',
+    alignItems: 'center',
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 20,
+  },
+  addMoreButtonText: {
     color: '#fff',
     fontWeight: 'bold',
   },

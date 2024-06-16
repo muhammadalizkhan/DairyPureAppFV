@@ -1,60 +1,61 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, FlatList, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { TopBakeries, topbakeries } from '../Data/data';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faLocationCrosshairs, faMoneyBill, faMotorcycle, faStar } from '@fortawesome/free-solid-svg-icons';
 
-
 const TopBarkiers = () => {
   const renderItem = ({ item }: { item: TopBakeries }) => (
-    <View style={styles.slide}>
-      <Image style={styles.img} source={item.image} />
-      <View style={styles.titleBody}>
-        <Text style={styles.name}>{item.name}</Text>
-        <View style={styles.ratingContainer}>
-          <FontAwesomeIcon
-            color='#49243E'
-            size={18}
-            style={styles.icon}
-            icon={faStar}
-          />
-          <Text style={[styles.rating, styles.detailText]}>{item.rating}</Text>
+    <TouchableWithoutFeedback>
+      <View style={styles.slide}>
+        <Image style={styles.img} source={item.image} />
+        <View style={styles.titleBody}>
+          <Text style={styles.name}>{item.name}</Text>
+          <View style={styles.ratingContainer}>
+            <FontAwesomeIcon
+              color='#49243E'
+              size={18}
+              style={styles.icon}
+              icon={faStar}
+            />
+            <Text style={[styles.rating, styles.detailText]}>{item.rating}</Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.details}>
-        <View style={styles.delivery}>
-          <FontAwesomeIcon
-            icon={faMoneyBill}
-            color='#49243E'
-            size={18}
-          />
-          <Text style={styles.detailText}>{item.deliveryPrice}</Text>
+        <View style={styles.details}>
           <View style={styles.delivery}>
-          <FontAwesomeIcon
-            icon={faMotorcycle}
-            color='#49243E'
-            size={18}
-          />
-          <Text style={styles.detailText}>{item.deliveryTime} | </Text>
-          <FontAwesomeIcon
-            icon={faLocationCrosshairs}
-            color='#49243E'
-            size={18}
-          />
-          <Text style={styles.detailText}>{item.location}</Text>
-        </View>
+            <FontAwesomeIcon
+              icon={faMoneyBill}
+              color='#49243E'
+              size={18}
+            />
+            <Text style={styles.detailText}>{item.deliveryPrice}</Text>
+            <View style={styles.delivery}>
+              <FontAwesomeIcon
+                icon={faMotorcycle}
+                color='#49243E'
+                size={18}
+              />
+              <Text style={styles.detailText}>{item.deliveryTime} | </Text>
+              <FontAwesomeIcon
+                icon={faLocationCrosshairs}
+                color='#49243E'
+                size={18}
+              />
+              <Text style={styles.detailText}>{item.location}</Text>
+            </View>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 
   return (
     <View style={styles.container}>
       <View style={styles.Bakriescontainer}>
         <Text style={styles.title}>Barkrie</Text>
-          <TouchableOpacity>
-            <Text style={styles.sellall}>See all</Text>
-          </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.sellall}>See all</Text>
+        </TouchableOpacity>
       </View>
       <FlatList
         data={topbakeries}
@@ -63,8 +64,8 @@ const TopBarkiers = () => {
         contentContainerStyle={styles.flatListContent}
       />
     </View>
-  )
-}
+  );
+};
 
 export default TopBarkiers;
 
@@ -73,11 +74,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
   },
-  Bakriescontainer: { 
+  Bakriescontainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  sellall:{
+  sellall: {
     fontSize: 15,
     marginRight: 10,
     padding: 10,

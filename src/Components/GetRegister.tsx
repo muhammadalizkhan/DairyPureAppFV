@@ -24,10 +24,10 @@ const styles = StyleSheet.create({
     container: {
         width: '90%',
         margin: 'auto',
-        backgroundColor: 'pink',
+        backgroundColor: '#E9B0DF',
         padding: 15,
         borderRadius: 10,
-        elevation: 8,
+        elevation: 1,
         marginTop: 10,
         marginBottom: 10,
     },

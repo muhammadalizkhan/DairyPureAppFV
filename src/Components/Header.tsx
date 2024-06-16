@@ -3,15 +3,14 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faBars, faCartShopping, faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
 
-
 const Header = () => {
   return (
     <View>
       <View style={styles.container}>
       <View style={styles.textContainer}>
-        <TouchableOpacity>
-          <FontAwesomeIcon icon={faBars} style={styles.icon}/>
-        </TouchableOpacity>
+      <TouchableOpacity>
+        <FontAwesomeIcon icon={faBars} style={styles.icon}/>
+      </TouchableOpacity>
         <View>
           <TouchableOpacity>
             <Text style={styles.mainText}>113 Johar Town</Text>

@@ -12,7 +12,7 @@ const AppProducts: React.FC = () => {
     );
     return (
             <View>
-                <Text style={styles.title}>Product</Text>
+                <Text style={styles.title}>Products</Text>
             <FlatList
             data={products}
             renderItem={renderProduct}
@@ -27,55 +27,10 @@ const AppProducts: React.FC = () => {
 export default AppProducts
 
 const styles = StyleSheet.create({
-    CattelProducts: {
-        height: 100,
-        padding: 5,
-        width: '95%',
-        borderRadius: 3,
-        backgroundColor: '#f3f3f3',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    AddtoCartText: {
-        textAlign: 'center',
-        fontSize: 10,
-        color: '#49243E',
-        fontWeight: 'bold',
-    },
-    AddToCart: {
-        marginTop: 5,
-    },
-    ProductsDetails: {
-        marginLeft: 10,
-    },
-    ProductName: {
-        color: '#49243E',
-        fontWeight: 'bold',
-        fontSize: 20,
-    },
-    Catteltitle: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        color: '#49243E',
-        marginLeft: 10,
-        marginTop: 5,
-    },
-    IconDiv: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        padding: 10,
-        borderRadius: 50,
-        backgroundColor: 'white',
+    product: {
         alignItems: 'center',
-
-    },
-    ProductImage: {
-        width: 90,
-        height: 90,
-        borderRadius: 8,
-    },
-    Maincontainer: {
+        marginHorizontal: 10,
+        marginTop: 5,
     },
     title: {
         fontSize: 25,
@@ -86,11 +41,6 @@ const styles = StyleSheet.create({
     scrollContainer: {
         alignItems: 'center',
     },
-    product: {
-        alignItems: 'center',
-        marginHorizontal: 10,
-        marginTop: 10,
-    },
     productImage: {
         width: 100,
         height: 100,
@@ -100,28 +50,6 @@ const styles = StyleSheet.create({
         marginTop: 5,
         fontSize: 16,
         fontWeight: 'bold',
-    },
-    Title: {
-        fontSize: 20,
         color: 'black',
-        fontFamily: 'system-ui',
-        fontWeight: 'bold',
-        position: 'absolute',
-        left: 50,
-        right: 50,
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginTop: 10,
-    },
-    icon: {
-        color: 'black',
-        marginHorizontal: 5,
-    },
-    rightIcons: {
-        flexDirection: 'row',
-        alignItems: 'center',
     },
 });

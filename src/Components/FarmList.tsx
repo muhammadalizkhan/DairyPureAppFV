@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, FlatList, Dimensions, Animated } from 'react-native';
+import { StyleSheet, View, Image, Text, VirtualizedList, Dimensions, Animated, SafeAreaView } from 'react-native';
 import { CattleFarm, cattleFarms } from '../Data/data';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faLocationCrosshairs, faMoneyBill, faMotorcycle, faStar } from '@fortawesome/free-solid-svg-icons';
@@ -49,14 +49,12 @@ const FarmList = () => {
                 </View>
             </View>
         </View>
-    )
+    );
 
     return (
-        <View style={styles.container}>
-            <View>
-                <Text style={styles.title}>Farms Production</Text>
-            </View>
-            <FlatList
+        <SafeAreaView style={styles.container}>
+            <Text style={styles.title}>Farms Production</Text>
+            <VirtualizedList
                 data={cattleFarms}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id.toString()}
@@ -66,15 +64,17 @@ const FarmList = () => {
                     [{ nativeEvent: { contentOffset: { y: scrollY } } }],
                     { useNativeDriver: false }
                 )}
+                getItemCount={() => cattleFarms.length}
+                getItem={(data, index) => data[index]}
                 pagingEnabled
                 snapToInterval={280}
                 decelerationRate="fast"
             />
-        </View>
-    )
-}
+        </SafeAreaView>
+    );
+};
 
-export default FarmList
+export default FarmList;
 
 const styles = StyleSheet.create({
     container: {
@@ -86,29 +86,29 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#49243E',
         marginLeft: 10,
+        marginBottom: 10,
     },
     name: {
         fontSize: 20,
         fontWeight: 'bold',
         color: 'black',
-        flex: 1, // Take as much space as available
+        flex: 1,
     },
     titleBody: {
         flexDirection: 'row',
-        alignItems: 'center', // Center vertically
-        paddingHorizontal: 10, // Add padding for spacing
+        alignItems: 'center',
+        paddingHorizontal: 10,
     },
     ratingContainer: {
         flexDirection: 'row',
-        alignItems: 'center', // Center vertically
+        alignItems: 'center',
     },
     icon: {
         marginRight: 5,
     },
     delivery: {
-        display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'flex-start',
+        alignItems: 'center',
     },
     slide: {
         width: width * 0.9,
@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginBottom: 20,
         borderRadius: 10,
-        marginTop:10,
         elevation: 5,
     },
     img: {
@@ -140,4 +139,4 @@ const styles = StyleSheet.create({
     rating: {
         color: 'green',
     },
-})
+});

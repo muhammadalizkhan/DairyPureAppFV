@@ -1,34 +1,36 @@
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native'
+import { SafeAreaView, ScrollView, ScrollViewBase, StyleSheet } from 'react-native'
 import React from 'react'
 import FarmHeader from './FarmHeader'
 import FarmList from '../Components/FarmList'
 import FarmNearYou from '../Components/FarmNearYou'
 import SearchBar from '../Components/SearchBar'
-import TopFarms from './TopFarms'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
 import AppProducts from '../Components/AppProducts'
-import { useNavigation } from '@react-navigation/native';
+import TopFarms from './TopFarms'
+import { ThemeProvider, useNavigation } from '@react-navigation/native'
+import GetRegister from '../Components/GetRegister'
 
 const Farm = () => {
   const navigation = useNavigation();
   return (
-    <SafeAreaProvider>
-       <ScrollView style={styles.container} >
+<SafeAreaView style={styles.container}>
+      <ScrollView>
         <FarmHeader />
         <SearchBar />
-        <TopFarms   navigation={navigation}/>
         <AppProducts />
+        <TopFarms navigation={navigation} />
         <FarmList />
         <FarmNearYou />
+        <GetRegister />
       </ScrollView>
-    </SafeAreaProvider>
+    </SafeAreaView>
   )
 }
+
 
 export default Farm
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     backgroundColor: '#f3f3f3',
-  }
+  },
 })

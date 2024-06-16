@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   ProductName: {
-    color: '#49243E',
+    color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
   },
