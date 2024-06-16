@@ -22,6 +22,7 @@
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@react-navigation/stack": "^6.3.29",
+    "@react-spring/native": "^9.5.5",
     "@sanity/client": "^6.18.0",
     "@shopify/flash-list": "^1.6.4",
     "react": "18.2.0",
@@ -36,7 +37,8 @@
     "react-native-snap-carousel": "^3.9.1",
     "react-native-step-indicator": "^1.0.3",
     "react-native-svg": "^15.2.0",
-    "react-native-tab-view": "^3.5.2"
+    "react-native-tab-view": "^3.5.2",
+    "react-tinder-card": "^1.6.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
