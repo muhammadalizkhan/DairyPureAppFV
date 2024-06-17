@@ -4,14 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faTruck, faPercent, faUnlock, faCommentsDollar, faShippingFast, faCashRegister } from '@fortawesome/free-solid-svg-icons';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import { useNavigation } from '@react-navigation/native';
+import UserSupport from '../Components/UserSupport';
+import EditCardDetails from '../Components/EditCardDetails';
 
 const BecomePro = () => {
-  // Mock user data and membership plans
   const userData = {
     name: 'Muhammad Ali Tax Mafia',
     email: 'malikhandev@outlook.com',
-    bankCard: '**** **** **** 1234', // Mock bank card
-    profileImage: require('../assets/Images/Profile.jpg'), // Adjust image path as per your project
+    bankCard: '**** **** **** 1234',
+    profileImage: require('../assets/Images/Profile.jpg'),
   };
 
   const membershipPlans = [
@@ -49,6 +51,7 @@ const BecomePro = () => {
     },
   ];
 
+  const navigation = useNavigation();
   const translateX = useSharedValue(0);
 
   const gestureHandler = () => ({
@@ -74,15 +77,13 @@ const BecomePro = () => {
 
   return (
     <View style={styles.container}>
-      {/* Header section */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => { /* Add navigation back functionality here */ }}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <FontAwesomeIcon icon={faChevronLeft} style={styles.backIcon} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Become a Pro Member</Text>
       </View>
-
-      {/* User profile section */}
+      
       <View style={styles.profileContainer}>
         <Image source={userData.profileImage} style={styles.profileImage} />
         <View style={styles.userInfo}>
@@ -91,8 +92,7 @@ const BecomePro = () => {
           <Text style={styles.userDetails}>Bank Card: {userData.bankCard}</Text>
         </View>
       </View>
-
-      {/* Membership plans section */}
+      
       <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
         {membershipPlans.map((plan, index) => (
           <PanGestureHandler key={index} {...gestureHandler()}>
@@ -114,6 +114,9 @@ const BecomePro = () => {
           </PanGestureHandler>
         ))}
       </ScrollView>
+      
+      <UserSupport />
+      
     </View>
   );
 };
@@ -146,6 +149,7 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 20,
     borderRadius: 10,
+    backgroundColor: '#fff',
   },
   profileImage: {
     width: 80,

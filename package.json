@@ -16,6 +16,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-native-fontawesome": "^0.3.0",
     "@react-native-community/cli": "^13.6.6",
+    "@react-native-firebase/app": "^20.1.0",
+    "@react-native-firebase/auth": "^20.1.0",
+    "@react-native-google-signin/google-signin": "^12.2.1",
     "@react-native-masked-view/masked-view": "^0.3.1",
     "@react-navigation/drawer": "^6.6.15",
     "@react-navigation/material-top-tabs": "^6.6.13",
@@ -25,6 +28,8 @@
     "@react-spring/native": "^9.5.5",
     "@sanity/client": "^6.18.0",
     "@shopify/flash-list": "^1.6.4",
+    "firebase": "^10.12.2",
+    "firebase-tools-extra": "^1.0.0",
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-fast-image": "^8.6.3",
@@ -38,6 +43,7 @@
     "react-native-step-indicator": "^1.0.3",
     "react-native-svg": "^15.2.0",
     "react-native-tab-view": "^3.5.2",
+    "react-native-vector-icons": "^10.1.0",
     "react-tinder-card": "^1.6.4"
   },
   "devDependencies": {

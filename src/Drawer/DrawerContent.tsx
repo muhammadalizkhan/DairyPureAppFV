@@ -76,7 +76,7 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigation }) =>
           <FontAwesomeIcon icon={faFileAlt} style={styles.icon} />
           <Text style={styles.drawerItemText}>Terms Conditions & Policy</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.drawerItem} onPress={navigateToScreen('Settings')}>
+        <TouchableOpacity style={styles.drawerItem} onPress={navigateToScreen('Setting')}>
           <FontAwesomeIcon icon={faCog} style={styles.icon} />
           <Text style={styles.drawerItemText}>Settings</Text>
         </TouchableOpacity>

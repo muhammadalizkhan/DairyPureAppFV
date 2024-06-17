@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "694809562270",
+    "project_id": "dpsaas-916cf",
+    "storage_bucket": "dpsaas-916cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694809562270:android:d393e0351b5d8e5b553f8f",
+        "android_client_info": {
+          "package_name": "com.dairypure"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPjLTQBGbOksgqpQkz_O_yOMomLPkrV1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
