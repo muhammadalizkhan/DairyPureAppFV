@@ -4,10 +4,10 @@ import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 GoogleSignin.configure({
-  webClientId: 'AIzaSyDPjLTQBGbOksgqpQkz_O_yOMomLPkrV1A',
+  webClientId: '1:694809562270:android:b33272ee65a43b66553f8f',
 });
 
-const SignUp = ({ navigation }) => {
+const SignUp = ({ navigation }: { navigation: any }) => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,7 +23,7 @@ const SignUp = ({ navigation }) => {
       const userCredential = await auth().createUserWithEmailAndPassword(email, password);
       await userCredential.user.updateProfile({ displayName: fullName });
       Alert.alert('Success', 'Account created successfully');
-    } catch (error) {
+    } catch (error: any) {
       Alert.alert('Sign Up Error', error.message);
     }
   };
@@ -34,7 +34,7 @@ const SignUp = ({ navigation }) => {
       const { idToken } = await GoogleSignin.signIn();
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
       await auth().signInWithCredential(googleCredential);
-    } catch (error) {
+    } catch (error: any) {
       Alert.alert('Google Sign-Up Error', error.message);
     }
   };

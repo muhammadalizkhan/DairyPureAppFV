@@ -31,24 +31,23 @@ import Setting from './src/DrawerContent/Setting';
 import TermsAndConditions from './src/DrawerContent/TermsAndConditions';
 import UserGuidance from './src/DrawerContent/UserGuidance';
 import AuthStackNavigator from './src/Authentication/AuthStackNavigator';
-import { auth } from './firebaseConfig';
+import { auth } from './src/Authentication/firebaseConfig';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user: any) => {
-      setIsAuthenticated(!!user);
-    });
-    return unsubscribe;
-  }, []);
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged((user: any) => {
+  //     setIsAuthenticated(!!user);
+  //   });
+  //   return unsubscribe;
+  // }, []);
 
   return (
     <NavigationContainer>
-      {isAuthenticated ? (
         <Drawer.Navigator
           initialRouteName="Home"
           screenOptions={{ headerShown: false }}
@@ -69,9 +68,6 @@ const App = () => {
           <Drawer.Screen name="TermsAndConditions" component={TermsAndConditions} />
           <Drawer.Screen name="UserGuidance" component={UserGuidance} />
         </Drawer.Navigator>
-      ) : (
-        <AuthStackNavigator />
-      )}
     </NavigationContainer>
   );
 };

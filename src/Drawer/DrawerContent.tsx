@@ -32,7 +32,7 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigation }) =>
           <FontAwesomeIcon icon={faCreditCard} style={styles.icon} />
           <Text style={styles.drawerItemText}>Payment Method</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.drawerItem} onPress={navigateToScreen('Address')}>
+        <TouchableOpacity style={styles.drawerItem} onPress={navigateToScreen('Adress')}>
           <FontAwesomeIcon icon={faMapMarkerAlt} style={styles.icon} />
           <Text style={styles.drawerItemText}>Address</Text>
         </TouchableOpacity>

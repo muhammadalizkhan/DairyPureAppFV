@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
-const OTP = ({ route, navigation }) => {
+const OTP = ({ route, navigation }: any) => {
   const { phoneNumber } = route.params;
   const [code, setCode] = useState('');
   const [confirm, setConfirm] = useState(null);
@@ -27,7 +27,6 @@ const OTP = ({ route, navigation }) => {
     }
   };
 
-  // Send verification code when component mounts
   useRef(() => {
     sendVerification();
   }, []);

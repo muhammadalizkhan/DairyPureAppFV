@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
-const ForgotPass = ({ navigation }) => {
+const ForgotPass = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
 
   const handleForgotPassword = async () => {

@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:694809562270:android:d393e0351b5d8e5b553f8f",
+        "mobilesdk_app_id": "1:694809562270:android:b33272ee65a43b66553f8f",
         "android_client_info": {
-          "package_name": "com.dairypure"
+          "package_name": "com.dairypureapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "694809562270-l6c7fk9n1fj800el5ib38j70vrkfpp8l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDPjLTQBGbOksgqpQkz_O_yOMomLPkrV1A"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694809562270-l6c7fk9n1fj800el5ib38j70vrkfpp8l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
