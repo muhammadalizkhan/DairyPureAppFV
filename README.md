@@ -45,7 +45,7 @@ To get started with Diary Pure, follow these steps:
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-username/diary-pure.git
+   gh repo clone muhammadalizkhan/DairyPureAppFV
    cd diary-pure
    ```
 
@@ -87,7 +87,7 @@ We welcome contributions to Diary Pure! To contribute, please follow these steps
 
 1. **Fork the repository:**
    ```sh
-   git clone https://github.com/your-username/diary-pure.git
+   gh repo clone muhammadalizkhan/DairyPureAppFV
    ```
 
 2. **Create a feature branch:**
@@ -109,7 +109,7 @@ We welcome contributions to Diary Pure! To contribute, please follow these steps
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the KhanDevForge License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
