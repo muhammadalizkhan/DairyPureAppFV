@@ -26,6 +26,19 @@ Diary Pure is a React Native application designed to bridge the gap between prod
 - **Notifications**: Keep users updated on order status and promotional offers.
 - **Search and Filter**: Advanced search and filter options to find the desired products quickly.
 
+## Detailed Features
+
+- **Dairy Products Purchase**: Users can buy dairy products directly from the farm, ensuring freshness and quality.
+- **Bakery Products**: A wide range of bakery products available for purchase.
+- **Complete Checkout System**: A streamlined checkout process for easy and secure transactions.
+- **Cart System**: Users can add products to the cart and manage their purchases before checkout.
+- **Exclusive Drawer Section**:
+  - **Edit Address**: Users can manage and edit their delivery addresses.
+  - **Payment Method**: Users can add, edit, and remove payment methods.
+- **Strong Support System**: Comprehensive customer support for resolving user queries and issues.
+- **Data Policy**: Clear and transparent data policies to protect user information.
+- **User Guide System**: An in-app user guide to help users navigate and utilize all features effectively.
+
 ## Installation
 
 To get started with Diary Pure, follow these steps:
@@ -61,9 +74,12 @@ To get started with Diary Pure, follow these steps:
 
 3. **Explore the app:**
    - Sign up or log in as a user.
-   - Browse through various product categories.
-   - Add products to your cart and place orders.
-   - Leave reviews and ratings for purchased products.
+   - Browse through various product categories including dairy and bakery products.
+   - Add products to your cart and proceed to checkout.
+   - Edit your address and payment methods through the exclusive drawer section.
+   - Place orders and track their status.
+   - Use the user guide for any help needed within the app.
+   - Contact support for any queries or issues.
 
 ## Contributing
 
@@ -97,7 +113,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For any inquiries or feedback, please contact us at [ali7847khan@gmail.com](mailto:ali7847khan@gmail.com).
+For any inquiries or feedback, please contact us at ali7847khan@gmail.com](mailto:ali7847khan@gmail.com).
 
 ---
 
