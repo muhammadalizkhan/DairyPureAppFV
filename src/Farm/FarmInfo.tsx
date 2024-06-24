@@ -20,12 +20,10 @@ const FarmInfo = ({ navigation }: any) => {
       setSelectedQuantity(null);
     }
   };
-
   const navigateToCart = () => {
     navigation.navigate('Cart', { cart });
   };
   
-
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent}>

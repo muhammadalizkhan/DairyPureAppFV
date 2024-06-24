@@ -14,7 +14,7 @@ const Farm = () => {
   return (
 <SafeAreaView style={styles.container}>
       <ScrollView>
-        <FarmHeader />
+        <FarmHeader navigation={navigation} />
         <SearchBar />
         <AppProducts />
         <TopFarms navigation={navigation} />

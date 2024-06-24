@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   box2: {
     height: 120,
-    width: 200,
+    width: 190,
     backgroundColor: '#E9B0DF',
     borderRadius: 10,
     elevation: 1,

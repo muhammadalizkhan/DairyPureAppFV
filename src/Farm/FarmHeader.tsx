@@ -2,10 +2,8 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faHeart, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { useNavigation } from '@react-navigation/native';
 
-const FarmHeader = () => {
-  const navigation = useNavigation();
+const FarmHeader = ({navigation}: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>

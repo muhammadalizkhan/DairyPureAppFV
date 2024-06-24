@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -32,42 +32,34 @@ import TermsAndConditions from './src/DrawerContent/TermsAndConditions';
 import UserGuidance from './src/DrawerContent/UserGuidance';
 import AuthStackNavigator from './src/Authentication/AuthStackNavigator';
 import { auth } from './src/Authentication/firebaseConfig';
+import FarmHeader from './src/Farm/FarmHeader';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const App = () => {
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((user: any) => {
-  //     setIsAuthenticated(!!user);
-  //   });
-  //   return unsubscribe;
-  // }, []);
-
   return (
     <NavigationContainer>
-        <Drawer.Navigator
-          initialRouteName="Home"
-          screenOptions={{ headerShown: false }}
-          drawerContent={(props) => <DrawerContent {...props} />}
-        >
-          <Drawer.Screen name="Home" component={StackNavigator} />
-          <Drawer.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
-          <Drawer.Screen name="Adress" component={Adress} />
-          <Drawer.Screen name="BecomePro" component={BecomePro} />
-          <Drawer.Screen name="ContactUs" component={ContactUs} />
-          <Drawer.Screen name="HelpCenter" component={HelpCenter} />
-          <Drawer.Screen name="InviteFriends" component={InviteFriends} />
-          <Drawer.Screen name="Premium" component={Premium} />
-          <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-          <Drawer.Screen name="Profile" component={Profile} />
-          <Drawer.Screen name="RegisterFarm" component={RegisterFarm} />
-          <Drawer.Screen name="Setting" component={Setting} />
-          <Drawer.Screen name="TermsAndConditions" component={TermsAndConditions} />
-          <Drawer.Screen name="UserGuidance" component={UserGuidance} />
-        </Drawer.Navigator>
+      <Drawer.Navigator
+        initialRouteName="DrawerHome"
+        screenOptions={{ headerShown: false }}
+        drawerContent={(props) => <DrawerContent {...props} />}
+      >
+        <Drawer.Screen name="DrawerHome" component={StackNavigator} />
+        <Drawer.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
+        <Drawer.Screen name="Adress" component={Adress} />
+        <Drawer.Screen name="BecomePro" component={BecomePro} />
+        <Drawer.Screen name="ContactUs" component={ContactUs} />
+        <Drawer.Screen name="HelpCenter" component={HelpCenter} />
+        <Drawer.Screen name="InviteFriends" component={InviteFriends} />
+        <Drawer.Screen name="Premium" component={Premium} />
+        <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+        <Drawer.Screen name="Profile" component={Profile} />
+        <Drawer.Screen name="RegisterFarm" component={RegisterFarm} />
+        <Drawer.Screen name="Setting" component={Setting} />
+        <Drawer.Screen name="TermsAndConditions" component={TermsAndConditions} />
+        <Drawer.Screen name="UserGuidance" component={UserGuidance} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
@@ -81,6 +73,7 @@ const StackNavigator = () => {
       <Stack.Screen name="FarmInfo" component={FarmInfo} />
       <Stack.Screen name="FarmDetails" component={FarmDetails} />
       <Stack.Screen name="FamousProducts" component={FamousProducts} />
+      <Stack.Screen name="FarmHeader" component={FarmHeader} />      
       <Stack.Screen name="Bakery" component={Bakery} />
       <Stack.Screen name="BakeryHeader" component={BakeryHeader} />
       <Stack.Screen name="BakeryProducts" component={BarkeryProducts} />
