@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -76,10 +75,11 @@ const RegisterFarm: React.FC<{ navigation: any }> = ({ navigation }) => {
           <FontAwesomeIcon icon={faChevronLeft} size={24} color="#007AFF" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Register Farm</Text>
-        <View style={styles.placeholder} />
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}>Boost your revenue with Dairy Pure</Text>
+        <Text style={styles.title}>
+          Boost your revenue with Dairy Pure
+        </Text>
         <Text style={styles.subtitle}>
           Sign up now and start earning more with the leading food delivery service DairyPure.
         </Text>
@@ -112,21 +112,10 @@ const RegisterFarm: React.FC<{ navigation: any }> = ({ navigation }) => {
           />
           {errors.email && <Text style={styles.error}>{errors.email}</Text>}
 
-          <Picker
-            selectedValue={businessType}
-            style={styles.picker}
-            onValueChange={(itemValue) => setBusinessType(itemValue)}
-          >
-            <Picker.Item label="Cattle Farm" value="Cattle Farm" />
-            <Picker.Item label="Dairy Farm" value="Dairy Farm" />
-            <Picker.Item label="Dairy Products Shop" value="Dairy Products Shop" />
-            <Picker.Item label="Bakeries" value="Bakeries" />
-          </Picker>
-
-          <View style={styles.phoneContainer}>
-            <View style={styles.countryCode}>
+          <View style={styles.inputRow}>
+            <View style={styles.countryCodeContainer}>
               <FloatingLabelInput
-                label="Country Code"
+                label=""
                 value={countryCode}
                 onChangeText={setCountryCode}
                 placeholder="Code"
@@ -134,9 +123,9 @@ const RegisterFarm: React.FC<{ navigation: any }> = ({ navigation }) => {
               />
               {errors.countryCode && <Text style={styles.error}>{errors.countryCode}</Text>}
             </View>
-            <View style={styles.phoneNumber}>
+            <View style={styles.phoneNumberContainer}>
               <FloatingLabelInput
-                label="Phone Number"
+                label=""
                 value={phoneNumber}
                 onChangeText={setPhoneNumber}
                 placeholder="Phone Number"
@@ -166,30 +155,26 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    alignItems: 'center',
     marginBottom: 20,
   },
   backButton: {
     width: 50,
   },
-  placeholder: {
-    flex: 1,
-  },
   headerTitle: {
+    flex: 1,
     fontSize: 20,
     fontWeight: 'bold',
     color: '#000',
-    marginLeft: 20,
-  },
-  content: {
-    flex: 1,
-    paddingTop: 20,
   },
   title: {
     fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 10,
     color: '#000',
+  },
+  content: {
+    flex: 1,
+    paddingTop: 20,
   },
   subtitle: {
     fontSize: 16,
@@ -249,15 +234,16 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     backgroundColor: '#fff',
   },
-  phoneContainer: {
+  inputRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: 15,
   },
-  countryCode: {
+  countryCodeContainer: {
     flex: 1,
     marginRight: 10,
   },
-  phoneNumber: {
+  phoneNumberContainer: {
     flex: 2,
     marginLeft: 10,
   },
