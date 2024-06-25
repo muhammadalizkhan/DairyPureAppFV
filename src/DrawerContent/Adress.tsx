@@ -14,17 +14,15 @@ const Address = ({ navigation }: any) => {
   const [view, setView] = useState<'list' | 'map' | 'form'>('list');
   const [selectedAddress, setSelectedAddress] = useState<AddressType | null>(null);
   const [addresses, setAddresses] = useState<AddressType[]>([
-    { id: '1', name: 'Home', address: '123 Main St, City, Country' },
-    { id: '2', name: 'Office', address: '456 Office Rd, City, Country' },
+    { id: '1', name: 'Home', address: '113 Model Colony, Gullberg, Lahore' },
+    { id: '2', name: 'Office', address: '456 Ayehsa Heigths Rd, Lahore, Pakistan' },
   ]);
   const [formState, setFormState] = useState<AddressType>({ id: '', name: '', address: '' });
 
   const handleSave = () => {
     if (selectedAddress) {
-      // Update existing address
       setAddresses(addresses.map(addr => addr.id === selectedAddress.id ? formState : addr));
     } else {
-      // Add new address
       setAddresses([...addresses, { ...formState, id: (addresses.length + 1).toString() }]);
     }
     setView('list');

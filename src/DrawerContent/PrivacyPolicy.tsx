@@ -8,16 +8,16 @@ const PrivacyPolicy = ({ navigation }: any) => {
 
   const renderMainScreen = () => (
     <View style={styles.content}>
-      <TouchableOpacity
+        <TouchableOpacity
         style={styles.listItem}
-        onPress={() => setCurrentScreen('dataPolicy')}>
-        <Text style={styles.listItemText}>Data Policy</Text>
+        onPress={() => setCurrentScreen('privacyPolicy')}>
+        <Text style={styles.listItemText}>Privacy Policy</Text>
         <FontAwesomeIcon icon={faChevronRight} size={24} color="#007AFF" />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.listItem}
-        onPress={() => setCurrentScreen('privacyPolicy')}>
-        <Text style={styles.listItemText}>Privacy Policy</Text>
+        onPress={() => setCurrentScreen('dataPolicy')}>
+        <Text style={styles.listItemText}>Data Policy</Text>
         <FontAwesomeIcon icon={faChevronRight} size={24} color="#007AFF" />
       </TouchableOpacity>
     </View>
@@ -169,7 +169,6 @@ const PrivacyPolicy = ({ navigation }: any) => {
         <Text style={styles.sectionText}>
           <Text style={styles.pointText}>• Address:</Text> [113 Model Colony Gullberg Lahore 54000 Punjab Pakistan]
         </Text>
-
         <Text style={styles.sectionText}>
           By using our app, you acknowledge that you have read and understood this Privacy Policy. Thank you for trusting us with your personal information.
         </Text>
@@ -218,7 +217,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#000',
-    textAlign: 'center',
   },
   content: {
     flex: 1,
