@@ -113,7 +113,7 @@ This project is licensed under the KhanDevForge License - see the [LICENSE](LICE
 
 ## Contact
 
-For any inquiries or feedback, please contact us at ali7847khan@gmail.com](mailto:ali7847khan@gmail.com).
+For any inquiries or feedback, please contact us at ali7847khan@gmail.com]
 
 ---
 
