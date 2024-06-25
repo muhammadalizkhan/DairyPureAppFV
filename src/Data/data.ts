@@ -209,7 +209,7 @@ const cattleFarmsNearYou: CattleFarmNearYou[] = [
         deliveryTime: '45-60 min',
         deliveryPrice: '199PKR',
         minOrder: '500PKR - Min Order',
-        image: require('../assets/Images/ImageOne.jpg'),
+        image: require('../assets/Images/Cheese.jpg'),
         reviews: '2000',
         location: 'Lahore',
     },
@@ -220,7 +220,7 @@ const cattleFarmsNearYou: CattleFarmNearYou[] = [
         deliveryTime: '45 - 60 min',
         deliveryPrice: '199 PKR',
         minOrder: '500 PKR min',
-        image: require('../assets/Images/ImageOne.jpg'),
+        image: require('../assets/Images/Honey.jpg'),
         reviews: '2000',
         location: 'Lahore',
     },
@@ -231,7 +231,7 @@ const cattleFarmsNearYou: CattleFarmNearYou[] = [
         deliveryTime: '45 - 60 min',
         deliveryPrice: '199 PKR',
         minOrder: '500 PKR min',
-        image: require('../assets/Images/ImageOne.jpg'),
+        image: require('../assets/Images/BeafMeat.jpg'),
         reviews: '2000',
         location: 'Lahore',
     },
@@ -242,7 +242,7 @@ const cattleFarmsNearYou: CattleFarmNearYou[] = [
         deliveryTime: '45 - 60 min',
         deliveryPrice: '199 PKR',
         minOrder: '500 PKR min',
-        image: require('../assets/Images/ImageOne.jpg'),
+        image: require('../assets/Images/Farm3.jpg'),
         reviews: '2000',
         location: 'Lahore',
     },
@@ -253,18 +253,15 @@ const cattleFarmsNearYou: CattleFarmNearYou[] = [
         deliveryTime: '45 - 60 min',
         deliveryPrice: '199 PKR',
         minOrder: '500 PKR min',
-        image: require('../assets/Images/ImageOne.jpg'),
+        image: require('../assets/Images/Farm4.jpg'),
         reviews: '2000',
         location: 'Lahore',
     },
 ]
-// Define the type for quantity and price
 export type QuantityPrice = {
-    quantity: string; // e.g., "1K", "2K", "3K", "4K", "5K"
-    eachprice: string; // e.g., "Rs.500", "Rs.1000", etc.
+    quantity: string;
+    eachprice: string;
   };
-  
-  // Update the Product type to include the new structure
   export type Product = {
     id: number;
     name: string;
@@ -272,7 +269,7 @@ export type QuantityPrice = {
     location: string;
     catagoery: string;
     price: string;
-    quantities: QuantityPrice[]; // New field for quantities and prices
+    quantities: QuantityPrice[];
   };
   
   const products: Product[] = [
@@ -452,21 +449,21 @@ const category: Category[] = [
     {
         id: 1,
         name: 'Coffee',
-        image: require('../assets/Images/Yougurt.jpg'),
+        image: require('../assets/Images/Coffe.png'),
     },
     {
         id: 2,
         name: 'Bavrage',
-        image: require('../assets/Images/Yougurt.jpg'),
+        image: require('../assets/Images/bavrage.jpg'),
     },
     {
         id: 3,
         name: 'Drinks',
-        image: require('../assets/Images/Yougurt.jpg'),
+        image: require('../assets/Images/Drinks.jpeg'),
     },
     {
         id: 4,
-        name: 'Fresh',
+        name: 'Sweets',
         image: require('../assets/Images/Yougurt.jpg'),
     },
     {
