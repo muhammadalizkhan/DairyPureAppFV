@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Platform } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Platform} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import CheckBox from '@react-native-community/checkbox'
 
 const TermsAndConditions = ({ navigation }: any) => {
   const [isChecked, setIsChecked] = useState(false);

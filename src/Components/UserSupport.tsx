@@ -33,12 +33,15 @@ const UserSupport = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#f7f7f7',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   rowContainer: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     marginVertical: 20,
+    marginBottom: 20,
   },
   rowItem: {
     flexDirection: 'row',

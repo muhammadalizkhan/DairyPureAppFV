@@ -20,7 +20,7 @@ const AddPaymentMethod = ({ navigation }: any) => {
         <View style={styles.placeholder} />
       </View>
       <View style={styles.cardPreview}>
-        <Image source={require('../assets/Images/Milk.jpg')} style={styles.cardImage} />
+        <Image source={require('../assets/Images/Card.png')} style={styles.cardImage} />
       </View>
       <Text style={styles.label}>Card Number</Text>
       <TextInput
@@ -28,13 +28,14 @@ const AddPaymentMethod = ({ navigation }: any) => {
         keyboardType="number-pad"
         value={cardNumber}
         onChangeText={setCardNumber}
-        placeholder="**** **** **** ****"
+        placeholder="0000 0000 0000 0000"
         placeholderTextColor="#888"
       />
       <Text style={styles.label}>Cardholder Name</Text>
       <TextInput
         style={styles.input}
         value={cardholderName}
+        placeholder="Mr Muhammad Ali Khan"
         onChangeText={setCardholderName}
       />
       <View style={styles.row}>
@@ -50,12 +51,13 @@ const AddPaymentMethod = ({ navigation }: any) => {
           />
         </View>
         <View style={styles.halfInputContainer}>
-          <Text style={styles.label}>CVV</Text>
+          <Text style={styles.label}>CVC</Text>
           <TextInput
             style={styles.input}
             keyboardType="number-pad"
             value={cvv}
             onChangeText={setCvv}
+            placeholder="000"
             secureTextEntry
           />
         </View>
@@ -101,18 +103,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
     borderRadius: 10,
-    overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
-    backgroundColor: '#fff',
   },
   cardImage: {
     width: '100%',
-    height: 200,
+    height: 220,
     resizeMode: 'cover',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    overflow: 'hidden',
+    shadowRadius: 4,
+    elevation: 5,
   },
   label: {
     fontSize: 14,

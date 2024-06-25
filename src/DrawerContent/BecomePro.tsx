@@ -5,12 +5,10 @@ import { faChevronLeft, faTruck, faPercent, faUnlock, faCommentsDollar, faShippi
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
-import UserSupport from '../Components/UserSupport';
-import EditCardDetails from '../Components/EditCardDetails';
 
 const BecomePro = () => {
   const userData = {
-    name: 'Muhammad Ali Tax Mafia',
+    name: 'Muhammad Ali Khan',
     email: 'malikhandev@outlook.com',
     bankCard: '**** **** **** 1234',
     profileImage: require('../assets/Images/Profile.jpg'),
@@ -51,6 +49,24 @@ const BecomePro = () => {
     },
   ];
 
+  const additionalOffers = [
+    {
+      title: 'Up to 30% Off for Bakeries offers',
+      content: 'Eat out like a pro with up to 30% flat discounts on your total bill when you dine out at Bakeries! Order T&Cs',
+      button: 'Subscribe via App',
+    },
+    {
+      title: 'Extra 5% off all pick-up orders',
+      content: 'Save more with pick-up! Valid at all participating Cattle Farms. Extra 5% off will be automatically applied at checkout.',
+      button: 'Subscribe via App',
+    },
+    {
+      title: '10% off Cattle Farm & Shops orders',
+      content: 'Valid for all orders above Rs.999. Your voucher would be auto-applied at checkout, no code needed.',
+      button: 'Subscribe Now',
+    },
+  ];
+
   const navigation = useNavigation();
   const translateX = useSharedValue(0);
 
@@ -79,44 +95,57 @@ const BecomePro = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <FontAwesomeIcon icon={faChevronLeft} style={styles.backIcon} />
+          <FontAwesomeIcon size={30} icon={faChevronLeft} style={styles.backIcon} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Become a Pro Member</Text>
       </View>
-      
-      <View style={styles.profileContainer}>
-        <Image source={userData.profileImage} style={styles.profileImage} />
-        <View style={styles.userInfo}>
-          <Text style={styles.userName}>{userData.name}</Text>
-          <Text style={styles.userEmail}>{userData.email}</Text>
-          <Text style={styles.userDetails}>Bank Card: {userData.bankCard}</Text>
+
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.profileContainer}>
+          <Image source={userData.profileImage} style={styles.profileImage} />
+          <View style={styles.userInfo}>
+            <Text style={styles.userName}>{userData.name}</Text>
+            <Text style={styles.userEmail}>{userData.email}</Text>
+            <Text style={styles.userDetails}>Bank Card: {userData.bankCard}</Text>
+          </View>
         </View>
-      </View>
-      
-      <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
-        {membershipPlans.map((plan, index) => (
-          <PanGestureHandler key={index} {...gestureHandler()}>
-            <Animated.View style={[styles.planCard, cardStyles]}>
-              <Text style={styles.planName}>{plan.name}</Text>
-              <View style={styles.planBenefits}>
-                {plan.benefits.map((benefit, idx) => (
-                  <View key={idx} style={styles.benefitContainer}>
-                    <FontAwesomeIcon icon={benefit.icon} style={styles.benefitIcon} />
-                    <Text style={styles.planBenefit}>{benefit.text}</Text>
-                  </View>
-                ))}
-              </View>
-              <Text style={styles.planPrice}>{plan.price}</Text>
-              <TouchableOpacity style={styles.selectButton}>
-                <Text style={styles.buttonText}>Select Plan</Text>
+
+        <Text style={styles.sectionTitle}>Membership Plans</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalScroll}>
+          {membershipPlans.map((plan, index) => (
+            <PanGestureHandler key={index} {...gestureHandler()}>
+              <Animated.View style={[styles.planCard, cardStyles]}>
+                <Text style={styles.planName}>{plan.name}</Text>
+                <View style={styles.planBenefits}>
+                  {plan.benefits.map((benefit, idx) => (
+                    <View key={idx} style={styles.benefitContainer}>
+                      <FontAwesomeIcon icon={benefit.icon} style={styles.benefitIcon} />
+                      <Text style={styles.planBenefit}>{benefit.text}</Text>
+                    </View>
+                  ))}
+                </View>
+                <Text style={styles.planPrice}>{plan.price}</Text>
+                <TouchableOpacity style={styles.selectButton}>
+                  <Text style={styles.buttonText}>Select Plan</Text>
+                </TouchableOpacity>
+              </Animated.View>
+            </PanGestureHandler>
+          ))}
+        </ScrollView>
+
+        <Text style={styles.sectionTitle}>Additional Offers</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalScroll}>
+          {additionalOffers.map((offer, index) => (
+            <View key={index} style={styles.offerCard}>
+              <Text style={styles.offerTitle}>{offer.title}</Text>
+              <Text style={styles.offerContent}>{offer.content}</Text>
+              <TouchableOpacity style={styles.offerButton}>
+                <Text style={styles.buttonText}>{offer.button}</Text>
               </TouchableOpacity>
-            </Animated.View>
-          </PanGestureHandler>
-        ))}
+            </View>
+          ))}
+        </ScrollView>
       </ScrollView>
-      
-      <UserSupport />
-      
     </View>
   );
 };
@@ -125,13 +154,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f0f0f0',
+  },
+  scrollContainer: {
     paddingHorizontal: 10,
-    paddingTop: 20, // Adjust as needed for status bar height
+    paddingBottom: 20,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   backIcon: {
     color: '#007bff',
@@ -147,6 +179,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
+    marginHorizontal: 20,
     marginBottom: 20,
     borderRadius: 10,
     backgroundColor: '#fff',
@@ -174,9 +207,18 @@ const styles = StyleSheet.create({
     color: '#666',
     marginTop: 5,
   },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 10,
+    marginLeft: 10,
+  },
+  horizontalScroll: {
+    paddingHorizontal: 10,
+  },
   planCard: {
     width: Dimensions.get('window').width * 0.8,
-    height: 250,
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 15,
@@ -228,6 +270,37 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  offerCard: {
+    width: Dimensions.get('window').width * 0.8,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 20,
+    marginHorizontal: 10,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 2 },
+  },
+  offerTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  offerContent: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 10,
+  },
+  offerButton: {
+    backgroundColor: '#007bff',
+    paddingVertical: 10,
+    borderRadius: 5,
+    alignItems: 'center',
   },
 });
 
