@@ -6,22 +6,18 @@ import { faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
 const EditCardDetails = () => {
   return (
     <View style={styles.cardContainer}>
-      {/* Card Header */}
       <View style={styles.cardHeader}>
         <Text style={styles.cardHeaderText}>Edit Card Details</Text>
         <TouchableOpacity style={styles.closeButton}>
           <FontAwesomeIcon icon={faTimes} style={styles.closeIcon} />
         </TouchableOpacity>
       </View>
-
-      {/* Card Body (Form) */}
-      <View style={styles.cardBody}>
+        <View style={styles.cardBody}>
         <TextInput style={styles.inputField} placeholder="Card Number" />
         <TextInput style={styles.inputField} placeholder="Expiry Date" />
         <TextInput style={styles.inputField} placeholder="CVV" />
       </View>
 
-      {/* Card Footer (Action Buttons) */}
       <View style={styles.cardFooter}>
         <TouchableOpacity style={[styles.actionButton, styles.saveButton]}>
           <FontAwesomeIcon icon={faSave} style={styles.actionButtonIcon} />

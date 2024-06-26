@@ -26,13 +26,19 @@ import InviteFriends from './src/DrawerContent/InviteFriends';
 import Premium from './src/DrawerContent/Premium';
 import PrivacyPolicy from './src/DrawerContent/PrivacyPolicy';
 import Profile from './src/DrawerContent/Profile';
-import RegisterFarm from './src/DrawerContent/RegisterFarm';
+import RegisterFarm from './src/DrawerContent/OpenRegisterFarm';
 import Setting from './src/DrawerContent/Setting';
 import TermsAndConditions from './src/DrawerContent/TermsAndConditions';
 import UserGuidance from './src/DrawerContent/UserGuidance';
-import AuthStackNavigator from './src/Authentication/AuthStackNavigator';
-import { auth } from './src/Authentication/firebaseConfig';
 import FarmHeader from './src/Farm/FarmHeader';
+import AppBody from './src/Components/AppBody'
+import AppProducts from './src/Components/AppProducts'
+import BakereyHome from './src/Components/BakereyHome'
+import BestChoice from './src/Components/BestChoice'
+import Catagoery from './src/Components/Catagoery'
+import DairyProducts from './src/Components/DairyProducts'
+import Discount from './src/Components/Discount'
+import EditCardDetails from './src/Components/EditCardDetails'
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -81,6 +87,14 @@ const StackNavigator = () => {
       <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="Checkout" component={Checkout} />
       <Stack.Screen name="OrderConfirmed" component={OrderConfirmed} />
+      <Stack.Screen name="AppBody" component={AppBody} />
+      <Stack.Screen name="AppProducts" component={AppProducts} />
+      <Stack.Screen name="BakereyHome" component={BakereyHome} />
+      <Stack.Screen name="BestChoice" component={BestChoice} />
+      <Stack.Screen name="Catagoery" component={Catagoery} />
+      <Stack.Screen name="DairyProducts" component={DairyProducts} />
+      <Stack.Screen name="Discount" component={Discount} />
+      <Stack.Screen name="EditCardDetails" component={EditCardDetails} />      
       <Stack.Screen name="Maps" component={Maps} />
     </Stack.Navigator>
   );

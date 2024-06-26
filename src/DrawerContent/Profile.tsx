@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Dimensions, Modal } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faChevronLeft, faCamera, faPencilAlt, faCreditCard, faMapMarkerAlt, faUser, faCommentsDollar, faTruck, faUnlock } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faCamera, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 const { width } = Dimensions.get('window');
 
@@ -77,13 +77,6 @@ const Profile = ({ navigation }: any) => {
     setIsModalVisible(false);
   };
 
-  // Array of rows for navigation
-  const rows = [
-    { icon: faCommentsDollar, label: 'Help Center', route: 'HelpCenter' },
-    { icon: faTruck, label: 'User Guidance', route: 'UserGuidance' },
-    { icon: faUnlock, label: 'Terms and Conditions', route: 'TermsAndConditions' },
-  ];
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -147,19 +140,6 @@ const Profile = ({ navigation }: any) => {
           </TouchableOpacity>
         </View>
         <Text style={styles.value}>{country}</Text>
-
-        {/* List items with icons and navigation */}
-        {rows.map((row, index) => (
-          <TouchableOpacity
-            key={index}
-            style={styles.listItem}
-            onPress={() => navigation.navigate(row.route)}
-          >
-            <FontAwesomeIcon icon={row.icon} size={20} color="#007bff" />
-            <Text style={styles.listItemText}>{row.label}</Text>
-          </TouchableOpacity>
-        ))}
-
       </View>
 
       <Modal
@@ -252,16 +232,6 @@ const styles = StyleSheet.create({
   value: {
     fontSize: 16,
     color: '#333',
-  },
-  listItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  listItemText: {
-    fontSize: 16,
-    marginLeft: 10,
-    color: '#007bff',
   },
   modalContainer: {
     flex: 1,
