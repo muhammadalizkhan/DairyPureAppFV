@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Home from './src/Home/Home';
 import Farm from './src/Farm/Farm';
 import Bakery from './src/Bakery/Bakery';
@@ -39,34 +40,23 @@ import Catagoery from './src/Components/Catagoery'
 import DairyProducts from './src/Components/DairyProducts'
 import Discount from './src/Components/Discount'
 import EditCardDetails from './src/Components/EditCardDetails'
+import Login from './src/Authentication/Login';
+import SignUp from './src/Authentication/SignUp';
+import OTP from './src/Authentication/OTP';
+import ForgotPass from './src/Authentication/ForgotPass';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+const AuthStack = createNativeStackNavigator();
 
-const App = () => {
+const AuthStackNavigator = () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="DrawerHome"
-        screenOptions={{ headerShown: false }}
-        drawerContent={(props) => <DrawerContent {...props} />}
-      >
-        <Drawer.Screen name="DrawerHome" component={StackNavigator} />
-        <Drawer.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
-        <Drawer.Screen name="Adress" component={Adress} />
-        <Drawer.Screen name="BecomePro" component={BecomePro} />
-        <Drawer.Screen name="ContactUs" component={ContactUs} />
-        <Drawer.Screen name="HelpCenter" component={HelpCenter} />
-        <Drawer.Screen name="InviteFriends" component={InviteFriends} />
-        <Drawer.Screen name="Premium" component={Premium} />
-        <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-        <Drawer.Screen name="Profile" component={Profile} />
-        <Drawer.Screen name="RegisterFarm" component={RegisterFarm} />
-        <Drawer.Screen name="Setting" component={Setting} />
-        <Drawer.Screen name="TermsAndConditions" component={TermsAndConditions} />
-        <Drawer.Screen name="UserGuidance" component={UserGuidance} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+      <AuthStack.Screen name="Login" component={Login} />
+      <AuthStack.Screen name="SignUp" component={SignUp} />
+      <AuthStack.Screen name="ForgotPass" component={ForgotPass} />
+      <AuthStack.Screen name="OTP" component={OTP} />
+    </AuthStack.Navigator>
   );
 };
 
@@ -97,6 +87,48 @@ const StackNavigator = () => {
       <Stack.Screen name="EditCardDetails" component={EditCardDetails} />      
       <Stack.Screen name="Maps" component={Maps} />
     </Stack.Navigator>
+  );
+};
+const DrawerNavigator = () => {
+  return (
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={{ headerShown: false }}
+      drawerContent={(props) => <DrawerContent {...props} />}
+    >
+      <Drawer.Screen name="Home" component={StackNavigator} />
+      <Drawer.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
+      <Drawer.Screen name="Adress" component={Adress} />
+      <Drawer.Screen name="BecomePro" component={BecomePro} />
+      <Drawer.Screen name="ContactUs" component={ContactUs} />
+      <Drawer.Screen name="HelpCenter" component={HelpCenter} />
+      <Drawer.Screen name="InviteFriends" component={InviteFriends} />
+      <Drawer.Screen name="Premium" component={Premium} />
+      <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+      <Drawer.Screen name="Profile" component={Profile} />
+      <Drawer.Screen name="RegisterFarm" component={RegisterFarm} />
+      <Drawer.Screen name="Setting" component={Setting} />
+      <Drawer.Screen name="TermsAndConditions" component={TermsAndConditions} />
+      <Drawer.Screen name="UserGuidance" component={UserGuidance} />
+    </Drawer.Navigator>
+  );
+};
+
+const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const userToken = await AsyncStorage.getItem('userToken');
+      setIsAuthenticated(!!userToken);
+    };
+    checkAuth();
+  }, []);
+
+  return (
+    <NavigationContainer>
+      {isAuthenticated ? <DrawerNavigator /> : <AuthStackNavigator />}
+    </NavigationContainer>
   );
 };
 

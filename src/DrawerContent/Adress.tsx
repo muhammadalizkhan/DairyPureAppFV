@@ -3,7 +3,6 @@ import { StyleSheet, Text, TouchableOpacity, View, TextInput, FlatList } from 'r
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 
-// Define the address type
 type AddressType = {
   id: string;
   name: string;
@@ -173,7 +172,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: '#ccc',
+    borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
@@ -215,6 +214,7 @@ const styles = StyleSheet.create({
   addressName: {
     fontSize: 18,
     fontWeight: '600',
+    color: 'black',
   },
   addressText: {
     fontSize: 14,

@@ -23,29 +23,29 @@ const ContactUs = ({navigation}: any) => {
         </Text>
 
         <View style={styles.contactItem}>
-          <FontAwesomeIcon icon={faPhone} size={24} color="#007bff" />
+          <FontAwesomeIcon icon={faPhone} size={24} color="#333" />
           <Text style={styles.contactText}>+(92) 308 1454 784</Text>
         </View>
 
         <View style={styles.contactItem}>
-          <FontAwesomeIcon icon={faEnvelope} size={24} color="#007bff" />
+          <FontAwesomeIcon icon={faEnvelope} size={24} color="#333" />
           <Text style={styles.contactText}>Support@DairyPure.com</Text>
         </View>
 
         <Text style={styles.socialTitle}>Social Media</Text>
 
         <View style={styles.socialItem}>
-          <FontAwesomeIcon icon={faFacebook} size={24} color="#007bff" />
+          <FontAwesomeIcon icon={faFacebook} size={24} color="#333" />
           <Text style={styles.socialText}>Stay updated, connect, and engage with us on Facebook.</Text>
         </View>
 
         <View style={styles.socialItem}>
-          <FontAwesomeIcon icon={faInstagram} size={24} color="#007bff" />
+          <FontAwesomeIcon icon={faInstagram} size={24} color="#333" />
           <Text style={styles.socialText}>Explore our visual world and discover beauty of our brand.</Text>
         </View>
 
         <View style={styles.socialItem}>
-          <FontAwesomeIcon icon={faTwitter} size={24} color="#007bff" />
+          <FontAwesomeIcon icon={faTwitter} size={24} color="#333" />
           <Text style={styles.socialText}>Follow us for real-time updates and lively discussions.</Text>
         </View>
       </View>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    color: '#666',
+    color: '#333',
     marginBottom: 20,
   },
   contactItem: {
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   contactText: {
     fontSize: 18,
     marginLeft: 10,
-    color: '#007bff',
+    color: '#333',
   },
   socialTitle: {
     fontSize: 20,
@@ -125,6 +125,6 @@ const styles = StyleSheet.create({
   socialText: {
     fontSize: 14,
     marginLeft: 10,
-    color: '#007bff',
+    color: '#333',
   },
 });

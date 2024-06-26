@@ -34,10 +34,9 @@ const Login = ({ navigation }: any) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       if (rememberMe) {
-        // Implement remember me functionality as needed
-      } else {
-        // Clear any remembered credentials if needed
-      }
+
+       } else {
+        }
     } catch (error: any) {
       Alert.alert('Login Error', error.message);
     }

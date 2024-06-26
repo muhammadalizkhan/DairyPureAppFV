@@ -716,6 +716,8 @@ export type BakriesProducts = {
     price: any;
     location: any;
     catagoery: any;
+    quantities: QuantityPrice[];
+
 };
 const bakriesProducts: BakriesProducts[] = [
     {
@@ -724,7 +726,13 @@ const bakriesProducts: BakriesProducts[] = [
         price: 'From Rs.500',
         location: 'Lahore',
         catagoery: 'Cattel Farm Organic Production',
-        image: require('../assets/Images/Milk.jpg'),
+        image: require('../assets/Images/cake.jpg'),
+      quantities: [
+        { quantity: '1 Pond', eachprice: 'Rs.1500' },
+        { quantity: '2 Pond', eachprice: 'Rs.2000' },
+        { quantity: '3 Pond', eachprice: 'Rs.3000' },
+        { quantity: '4 Pond', eachprice: 'Rs.5000' },
+      ],
     },
     {
         id: 2,
@@ -732,7 +740,14 @@ const bakriesProducts: BakriesProducts[] = [
         price: 'From Rs.500',
         location: 'Lahore',
         catagoery: 'Cattel Farm Organic Production',
-        image: require('../assets/Images/Milk.jpg'),
+        image: require('../assets/Images/Coffe.png'),
+      quantities: [
+        { quantity: 'Americano', eachprice: 'Rs.500' },
+        { quantity: 'Espresso', eachprice: 'Rs.900' },
+        { quantity: 'Latie', eachprice: 'Rs.1300' },
+        { quantity: 'Mocha', eachprice: 'Rs.1700' },
+        { quantity: 'Roma', eachprice: 'Rs.2100' },
+      ],
     },
     {
         id: 3,
@@ -741,6 +756,13 @@ const bakriesProducts: BakriesProducts[] = [
         location: 'Lahore',
         catagoery: 'Cattel Farm Organic Production',
         image: require('../assets/Images/Milk.jpg'),
+      quantities: [
+        { quantity: 'Mango Cup', eachprice: 'Rs.500' },
+        { quantity: 'Orange', eachprice: 'Rs.900' },
+        { quantity: 'Pogment', eachprice: 'Rs.300' },
+        { quantity: 'Juice Apple', eachprice: 'Rs.700' },
+        { quantity: 'Pine', eachprice: 'Rs.400' },
+      ],
     },
     {
         id: 4,
@@ -748,7 +770,13 @@ const bakriesProducts: BakriesProducts[] = [
         price: 'From Rs.500',
         location: 'Lahore',
         catagoery: 'Cattel Farm Organic Production',
-        image: require('../assets/Images/Milk.jpg'),
+        image: require('../assets/Images/sweets.jpg'),
+      quantities: [
+        { quantity: '1KG', eachprice: 'Rs.500' },
+        { quantity: '2KG', eachprice: 'Rs.900' },
+        { quantity: '3KG', eachprice: 'Rs.1300' },
+        { quantity: '4KG', eachprice: 'Rs.1700' },
+      ],
     },
     {
         id: 5,
@@ -756,7 +784,83 @@ const bakriesProducts: BakriesProducts[] = [
         price: 'From Rs.500',
         location: 'Lahore',
         catagoery: 'Cattel Farm Organic Production',
-        image: require('../assets/Images/Milk.jpg'),
+        image: require('../assets/Images/brownies.jpg'),
+      quantities: [
+        { quantity: '1KG', eachprice: 'Rs.600' },
+        { quantity: '2KG', eachprice: 'Rs.700' },
+        { quantity: '3KG', eachprice: 'Rs.1300' },
+        { quantity: '4KG', eachprice: 'Rs.3200' },
+      ],
+    },
+    {
+        id: 6,
+        name: 'Buns',
+        price: 'From Rs.500',
+        location: 'Lahore',
+        catagoery: 'Cattel Farm Organic Production',
+        image: require('../assets/Images/buns.jpg'),
+      quantities: [
+        { quantity: '1KG', eachprice: 'Rs.200' },
+        { quantity: '2KG', eachprice: 'Rs.400' },
+        { quantity: '3KG', eachprice: 'Rs.600' },
+        { quantity: '4KG', eachprice: 'Rs.800' },
+      ],
+    },
+    {
+        id: 7,
+        name: 'Bagel',
+        price: 'From Rs.500',
+        location: 'Lahore',
+        catagoery: 'Cattel Farm Organic Production',
+        image: require('../assets/Images/Bagel.jpg'),
+      quantities: [
+        { quantity: '1KG', eachprice: 'Rs.600' },
+        { quantity: '2KG', eachprice: 'Rs.700' },
+        { quantity: '3KG', eachprice: 'Rs.1300' },
+        { quantity: '4KG', eachprice: 'Rs.3200' },
+      ],
+    },
+    {
+        id: 8,
+        name: 'Bread',
+        price: 'From Rs.500',
+        location: 'Lahore',
+        catagoery: 'Cattel Farm Organic Production',
+        image: require('../assets/Images/bread.jpg'),
+      quantities: [
+        { quantity: 'Small', eachprice: 'Rs.600' },
+        { quantity: 'Medium', eachprice: 'Rs.700' },
+        { quantity: 'Large', eachprice: 'Rs.900' },
+        { quantity: 'X Large', eachprice: 'Rs.1000' },
+      ],
+    },
+    {
+        id: 9,
+        name: 'Muffins',
+        price: 'From Rs.500',
+        location: 'Lahore',
+        catagoery: 'Cattel Farm Organic Production',
+        image: require('../assets/Images/muffins.png'),
+      quantities: [
+        { quantity: '1 Pack', eachprice: 'Rs.600' },
+        { quantity: '2 Pack', eachprice: 'Rs.700' },
+        { quantity: '3 Pack', eachprice: 'Rs.1300' },
+        { quantity: '4 Pack', eachprice: 'Rs.3200' },
+      ],
+    },
+    {
+        id: 10,
+        name: 'Donuts',
+        price: 'From Rs.500',
+        location: 'Lahore',
+        catagoery: 'Cattel Farm Organic Production',
+        image: require('../assets/Images/donuts.jpg'),
+      quantities: [
+        { quantity: '1KG', eachprice: 'Rs.600' },
+        { quantity: '2KG', eachprice: 'Rs.700' },
+        { quantity: '3KG', eachprice: 'Rs.1300' },
+        { quantity: '4KG', eachprice: 'Rs.3200' },
+      ],
     },
 ]
 export { cattleFarms, topCattelFarms, cattleFarmsNearYou, bakeries, topbakeries, bakeriesNearYou, bakriesProducts, products, category };
