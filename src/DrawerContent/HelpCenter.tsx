@@ -3,52 +3,41 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput } from 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faCreditCard, faUserPlus, faMapMarkerAlt, faIdCard, faPhone, faStar, faUser, faShop, faBook, faCogs, faFileAlt, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 
-const HelpCenter = () => {
+const HelpCenter = ({navigation}: any) => {
   const icons = [
-    { icon: faCreditCard, text: 'Add Payment Method' },
-    { icon: faUserPlus, text: 'Become Pro' },
-    { icon: faMapMarkerAlt, text: 'Address & Locations' },
-    { icon: faIdCard, text: 'User Card Info' },
-    { icon: faPhone, text: 'Contact Us' },
-    { icon: faStar, text: 'Our Premium Services' },
-    { icon: faUser, text: 'Our Profile' },
-    { icon: faShop, text: 'Farm & Shop Registration' },
-    { icon: faBook, text: 'User Guide' },
-    { icon: faCogs, text: 'Setting' },
-    { icon: faFileAlt, text: 'Term Condition' },
-    { icon: faShieldAlt, text: 'Data Policy' },
+    { icon: faCreditCard, text: 'Add Payment Method', screen: 'AddPaymentMethod' },
+    { icon: faUserPlus, text: 'Become Pro', screen: 'AddPaymentMethod' },
+    { icon: faMapMarkerAlt, text: 'Address & Locations', screen: 'Adress' },
+    { icon: faPhone, text: 'Contact Us', screen: 'ContactUs' },
+    { icon: faStar, text: 'Our Premium Services', screen: 'BecomePro' },
+    { icon: faUser, text: 'Our Profile', screen: 'Profile' },
+    { icon: faShop, text: 'Farm & Shop Registration', screen: 'OpenRegisterFarm' },
+    { icon: faBook, text: 'User Guide', screen: 'UserGuidance' },
+    { icon: faCogs, text: 'Setting', screen: 'Setting' },
+    { icon: faIdCard, text: 'User Card Info', screen: 'AddPaymentMethod' },
+    { icon: faFileAlt, text: 'Term Condition', screen: 'TermsAndConditions' },
+    { icon: faShieldAlt, text: 'Data Policy', screen: 'PrivacyPolicy' },
   ];
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
-          <FontAwesomeIcon icon={faChevronLeft} size={24} color="#fff" />
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+          <FontAwesomeIcon icon={faChevronLeft} size={25} color="#007bff"/>
         </TouchableOpacity>
         <Text style={styles.headerText}>Help Center</Text>
       </View>
-      
-      {/* Search Bar */}
       <TextInput
         style={styles.searchBar}
         placeholder="Search"
       />
-      
-      {/* Note Section */}
-      <View style={styles.noteContainer}>
-        <Text style={styles.noteText}>
-          Dairy Pure Help Center here to provide support.
-        </Text>
-        <Text style={styles.noteSubText}>
-          Have any question about a particular Feature or Related to your Order? Just log into the account you used to place the order with. Our customer care team is right here to support you!
-        </Text>
-      </View>
-      
-      {/* Icon List */}
       <ScrollView style={styles.iconList}>
         {icons.map((item, index) => (
-          <TouchableOpacity key={index} style={styles.iconItem}>
+          <TouchableOpacity
+            key={index}
+            style={styles.iconItem}
+            onPress={() => navigation.navigate(item.screen)}
+            >
             <FontAwesomeIcon icon={item.icon} size={24} color="#333" />
             <Text style={styles.iconText}>{item.text}</Text>
           </TouchableOpacity>
@@ -68,7 +57,6 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#6200ee',
     paddingVertical: 12,
     paddingHorizontal: 16,
   },
@@ -78,7 +66,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#007bff',
   },
   searchBar: {
     margin: 16,

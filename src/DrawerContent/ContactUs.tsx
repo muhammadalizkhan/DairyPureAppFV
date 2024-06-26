@@ -10,7 +10,7 @@ const ContactUs = ({navigation}: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} >
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <FontAwesomeIcon icon={faChevronLeft} size={24} color="#007bff" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Contact Us</Text>
