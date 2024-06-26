@@ -7,7 +7,7 @@ import { faCreditCard, faMapMarkerAlt, faUserPlus, faEnvelope, faQuestionCircle,
 const userData = {
   name: 'Muhammad Ali Khan',
   address: '113 Johar Town, Lahore',
-  profileImage: require('../assets/Images/Profile.jpg'),
+  profileImage: require('../assets/Images/profile.jpg'),
 };
 
 const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigation }) => {

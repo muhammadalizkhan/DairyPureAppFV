@@ -11,7 +11,7 @@ const BecomePro = () => {
     name: 'Muhammad Ali Khan',
     email: 'malikhandev@outlook.com',
     bankCard: '**** **** **** 1234',
-    profileImage: require('../assets/Images/Profile.jpg'),
+    profileImage: require('../assets/Images/profile.jpg'),
   };
 
   const membershipPlans = [

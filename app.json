@@ -1,4 +1,15 @@
 {
   "name": "DairyPureApp",
-  "displayName": "DairyPureApp"
+  "displayName": "DairyPureApp",
+  "expo": {
+    "plugins": [
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "mapbox",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiaW5hYW1mbHV0dGVyZGV2IiwiYSI6ImNsbzRzdWp3ZTA1eDgyamxhajJoeDFjejkifQ.gGwdybRtCvYnmblALLiD9Q"
+        }
+      ]
+    ]
+  }
 }

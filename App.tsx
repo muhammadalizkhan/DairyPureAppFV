@@ -15,7 +15,6 @@ import FamousProducts from './src/Components/FamousProducts';
 import TopFarms from './src/Farm/TopFarms';
 import BakeryHeader from './src/Bakery/BakeryHeader';
 import BarkeryProducts from './src/Bakery/BarkeryProducts';
-import Maps from './src/Maps/Maps';
 import DrawerContent from './src/Drawer/DrawerContent';
 import AddPaymentMethod from './src/DrawerContent/AddPaymentMethod';
 import Adress from './src/DrawerContent/Adress';
@@ -30,9 +29,9 @@ import RegisterFarm from './src/DrawerContent/RegisterFarm';
 import Setting from './src/DrawerContent/Setting';
 import TermsAndConditions from './src/DrawerContent/TermsAndConditions';
 import UserGuidance from './src/DrawerContent/UserGuidance';
-import AuthStackNavigator from './src/Authentication/AuthStackNavigator';
-import { auth } from './src/Authentication/firebaseConfig';
 import FarmHeader from './src/Farm/FarmHeader';
+import MapsScreen from './src/Maps/Maps';
+
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -66,7 +65,8 @@ const App = () => {
 
 const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName="Maps" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Maps" component={MapsScreen} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Farm" component={Farm} />
       <Stack.Screen name="TopFarms" component={TopFarms} />
@@ -81,7 +81,6 @@ const StackNavigator = () => {
       <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="Checkout" component={Checkout} />
       <Stack.Screen name="OrderConfirmed" component={OrderConfirmed} />
-      <Stack.Screen name="Maps" component={Maps} />
     </Stack.Navigator>
   );
 };
