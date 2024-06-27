@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "694809562270",
-    "project_id": "dpsaas-916cf",
-    "storage_bucket": "dpsaas-916cf.appspot.com"
+    "project_number": "49534814437",
+    "project_id": "dairypureapp",
+    "storage_bucket": "dairypureapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:694809562270:android:b33272ee65a43b66553f8f",
+        "mobilesdk_app_id": "1:49534814437:android:5d5c919dfbb6173b9f6c0c",
         "android_client_info": {
           "package_name": "com.dairypureapp"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "694809562270-l6c7fk9n1fj800el5ib38j70vrkfpp8l.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDPjLTQBGbOksgqpQkz_O_yOMomLPkrV1A"
+          "current_key": "AIzaSyDH_aU6FbBqOdMev-w7ey0xZCa1UxJSr-E"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "694809562270-l6c7fk9n1fj800el5ib38j70vrkfpp8l.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

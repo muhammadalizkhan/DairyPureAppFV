@@ -16,6 +16,7 @@ const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigation }) =>
   };
 
   const handleLogout = () => {
+    navigation.navigate('Login');
   };
 
   return (

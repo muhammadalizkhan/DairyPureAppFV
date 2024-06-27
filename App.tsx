@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Home from './src/Home/Home';
 import Farm from './src/Farm/Farm';
 import Bakery from './src/Bakery/Bakery';
@@ -16,6 +18,7 @@ import TopFarms from './src/Farm/TopFarms';
 import BakeryHeader from './src/Bakery/BakeryHeader';
 import BarkeryProducts from './src/Bakery/BarkeryProducts';
 import Maps from './src/Maps/Maps';
+import ForgotPass from './src/Authentication/ForgotPass';
 import DrawerContent from './src/Drawer/DrawerContent';
 import AddPaymentMethod from './src/DrawerContent/AddPaymentMethod';
 import Adress from './src/DrawerContent/Adress';
@@ -41,12 +44,15 @@ import Discount from './src/Components/Discount';
 import EditCardDetails from './src/Components/EditCardDetails';
 import BarkeryInfo from './src/Bakery/BarkeryInfo';
 
+import AuthStackNavigator from './src/Authentication/AuthStackNavigator';
+import Header from './src/Components/Header';
+
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName="Auth" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Farm" component={Farm} />
       <Stack.Screen name="TopFarms" component={TopFarms} />
@@ -56,6 +62,7 @@ const StackNavigator = () => {
       <Stack.Screen name="FarmHeader" component={FarmHeader} />      
       <Stack.Screen name="Bakery" component={Bakery} />
       <Stack.Screen name="BakeryHeader" component={BakeryHeader} />
+      <Stack.Screen name="ForgotPass" component={ForgotPass} />
       <Stack.Screen name="BakeryProducts" component={BarkeryProducts} />
       <Stack.Screen name='BarkeryInfo' component={BarkeryInfo} />
       <Stack.Screen name="Products" component={Products} />
@@ -71,6 +78,9 @@ const StackNavigator = () => {
       <Stack.Screen name="Discount" component={Discount} />
       <Stack.Screen name="EditCardDetails" component={EditCardDetails} />      
       <Stack.Screen name="Maps" component={Maps} />
+      <Stack.Screen name="Auth" component={AuthStackNavigator} />
+      <Stack.Screen name="DrawerNav" component={DrawerNavigator} />
+      <Stack.Screen name="Header" component={Header} />
     </Stack.Navigator>
   );
 };
@@ -101,9 +111,26 @@ const DrawerNavigator = () => {
 };
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const token = await AsyncStorage.getItem('userToken');
+      setIsLoggedIn(!!token);
+      setIsLoading(false);
+    };
+    checkLoginStatus();
+  }, []);
+
+  if (isLoading) {
+    // You can render a loading screen here
+    return null;
+  }
+
   return (
     <NavigationContainer>
-      <DrawerNavigator />
+      <DrawerNavigator/>
     </NavigationContainer>
   );
 };

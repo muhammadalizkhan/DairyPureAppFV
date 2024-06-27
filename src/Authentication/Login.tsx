@@ -20,12 +20,13 @@ import {
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faFacebook, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 GoogleSignin.configure({
-  webClientId: '1:694809562270:android:b33272ee65a43b66553f8f',
+  webClientId: '1:49534814437:android:5d5c919dfbb6173b9f6c0c',
 });
 
-const Login = ({ navigation }: any) => {
+const Login = ({ navigation } : any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -33,12 +34,19 @@ const Login = ({ navigation }: any) => {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      if (rememberMe) {
-
-       } else {
-        }
+      navigation.navigate('Home');
     } catch (error: any) {
-      Alert.alert('Login Error', error.message);
+      console.error('Login Error:', error);
+  
+      if (error.code === 'auth/network-request-failed') {
+        Alert.alert('Network Error', 'Network request failed. Please check your internet connection and try again.');
+      } else if (error.code === 'auth/user-not-found') {
+        Alert.alert('Login Error', 'No user found with this email.');
+      } else if (error.code === 'auth/wrong-password') {
+        Alert.alert('Login Error', 'Incorrect password. Please try again.');
+      } else {
+        Alert.alert('Login Error', error.message);
+      }
     }
   };
 
@@ -48,6 +56,8 @@ const Login = ({ navigation }: any) => {
       const { idToken } = await GoogleSignin.signIn();
       const googleCredential = GoogleAuthProvider.credential(idToken);
       await signInWithCredential(auth, googleCredential);
+      await AsyncStorage.setItem('userToken', 'some-token');
+      navigation.replace('Home');
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         Alert.alert('Google Sign-In', 'Sign in process was cancelled');
