@@ -26,18 +26,23 @@ GoogleSignin.configure({
   webClientId: '1:49534814437:android:5d5c919dfbb6173b9f6c0c',
 });
 
-const Login = ({ navigation } : any) => {
+const Login = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleLogin = async () => {
+    if (password.length < 8) {
+      Alert.alert('Validation Error', 'Password must be at least 8 characters long.');
+      return;
+    }
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigation.navigate('Home');
     } catch (error: any) {
       console.error('Login Error:', error);
-  
+
       if (error.code === 'auth/network-request-failed') {
         Alert.alert('Network Error', 'Network request failed. Please check your internet connection and try again.');
       } else if (error.code === 'auth/user-not-found') {
@@ -82,12 +87,16 @@ const Login = ({ navigation } : any) => {
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.content}>
-          <Text style={styles.title}>Welcome Back</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Welcome to</Text>
+            <Text style={styles.SUbtitle}>Dairy Pure</Text>
+            <Text style={styles.Logintitle}>Login to your Account & Unleash the Power of DairyPure</Text>
+          </View>
           <TextInput
             style={styles.input}
             placeholder="Email"
             keyboardType="email-address"
-            placeholderTextColor="#888"
+            placeholderTextColor="#000000"
             value={email}
             onChangeText={setEmail}
           />
@@ -95,7 +104,7 @@ const Login = ({ navigation } : any) => {
             style={styles.input}
             placeholder="Password"
             secureTextEntry
-            placeholderTextColor="#888"
+            placeholderTextColor="#000000"
             value={password}
             onChangeText={setPassword}
           />
@@ -154,17 +163,34 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
+    padding: 15,
   },
   content: {
     width: '100%',
     alignItems: 'center',
   },
+  titleContainer: {
+    width: '100%',
+    marginTop: 50,
+  },
   title: {
-    fontSize: 32,
-    marginBottom: 40,
-    color: 'black',
+    fontSize: 25,
+    color: '#49243E',
     fontWeight: 'bold',
+    alignSelf: 'flex-start',
+
+  },
+  SUbtitle:{
+    fontSize: 35,
+    color: '#49243E',
+    fontWeight: 'bold',
+    textAlign: 'left',
+  },
+  Logintitle:{
+    fontSize: 13,
+    color: '#49243E',
+    textAlign: 'left',
+
   },
   input: {
     width: '100%',
@@ -175,6 +201,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     fontSize: 16,
+    color: '#49243E', // User-typed text color
   },
   passwordOptionsContainer: {
     width: '100%',
@@ -194,6 +221,7 @@ const styles = StyleSheet.create({
   rememberMeText: {
     marginRight: 10,
     fontSize: 14,
+    color: '#49243E',
   },
   loginButton: {
     backgroundColor: '#007BFF',

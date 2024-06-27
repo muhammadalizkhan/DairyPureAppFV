@@ -6,7 +6,7 @@ const AppBody = ({ navigation }: any) => {
     <View style={styles.container}>
       <Pressable onPress={() => navigation.navigate('Farm')}>
         <View style={[styles.box, styles.box1]}>
-          <Text style={styles.label}>Cattle Farms</Text>
+          <Text style={styles.label}>Cattle Farm</Text>
           <Text style={[styles.Sublabel, { top: 40 }]}>Order Farm Prodcuts</Text>
         </View>
       </Pressable>

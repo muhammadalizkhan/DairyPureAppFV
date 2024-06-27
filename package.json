@@ -1,5 +1,5 @@
 {
-  "name": "DairyPureApp",
+  "name": "dairypureapp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -31,8 +31,12 @@
     "@react-spring/native": "^9.5.5",
     "@sanity/client": "^6.18.0",
     "@shopify/flash-list": "^1.6.4",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "firebase": "^10.12.2",
     "firebase-tools-extra": "^1.0.0",
+    "nodemailer": "^6.9.14",
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-fast-image": "^8.6.3",
@@ -71,5 +75,10 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@3.6.4",
+  "description": "Diary Pure is a comprehensive marketplace connecting cattle farmers, individual farms, bakeries, and Pakistani corporations. Offering organic and dairy products, it's the ultimate destination for quality-conscious consumers seeking farm-fresh goodness.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

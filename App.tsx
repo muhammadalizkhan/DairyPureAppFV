@@ -124,7 +124,6 @@ const App = () => {
   }, []);
 
   if (isLoading) {
-    // You can render a loading screen here
     return null;
   }
 

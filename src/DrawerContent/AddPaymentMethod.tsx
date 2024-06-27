@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Switch, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Switch, Image, Alert } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+
+type Errors = {
+  cardNumber?: string;
+  cardholderName?: string;
+  expiryDate?: string;
+  cvv?: string;
+};
 
 const AddPaymentMethod = ({ navigation }: any) => {
   const [cardNumber, setCardNumber] = useState('');
@@ -9,6 +16,46 @@ const AddPaymentMethod = ({ navigation }: any) => {
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
   const [saveCard, setSaveCard] = useState(false);
+  const [errors, setErrors] = useState<Errors>({});
+
+  const validateCardNumber = (number: string) => {
+    const regex = /^\d{16}$/;
+    return regex.test(number);
+  };
+
+  const validateCardholderName = (name: string) => {
+    const regex = /^[A-Za-z\s]+$/;
+    return regex.test(name);
+  };
+
+  const validateCvv = (cvv: string) => {
+    const regex = /^\d{3}$/;
+    return regex.test(cvv);
+  };
+
+  const handleAddCard = () => {
+    const newErrors: Errors = {};
+    if (!validateCardNumber(cardNumber)) {
+      newErrors.cardNumber = 'Card number must be 16 digits';
+    }
+    if (!validateCardholderName(cardholderName)) {
+      newErrors.cardholderName = 'Cardholder name must contain only alphabets';
+    }
+    if (!validateCvv(cvv)) {
+      newErrors.cvv = 'CVV must be 3 digits';
+    }
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      // Proceed with adding card logic
+      Alert.alert(
+        "Card Added",
+        "Your card details are updated. When you order, we will use these details.",
+        [{ text: "OK", onPress: () => navigation.goBack() }]
+      );
+      console.log('Card added successfully');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -24,20 +71,24 @@ const AddPaymentMethod = ({ navigation }: any) => {
       </View>
       <Text style={styles.label}>Card Number</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, errors.cardNumber && styles.inputError]}
         keyboardType="number-pad"
         value={cardNumber}
         onChangeText={setCardNumber}
         placeholder="0000 0000 0000 0000"
         placeholderTextColor="#888"
+        maxLength={16} // Limit input to 16 digits
       />
+      {errors.cardNumber && <Text style={styles.errorText}>{errors.cardNumber}</Text>}
       <Text style={styles.label}>Cardholder Name</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, errors.cardholderName && styles.inputError]}
         value={cardholderName}
-        placeholder="Mr Muhammad Ali Khan"
         onChangeText={setCardholderName}
+        placeholder="Mr Muhammad Ali Khan"
+        placeholderTextColor="#888"
       />
+      {errors.cardholderName && <Text style={styles.errorText}>{errors.cardholderName}</Text>}
       <View style={styles.row}>
         <View style={styles.halfInputContainer}>
           <Text style={styles.label}>Expiry Date (MM/YY)</Text>
@@ -53,20 +104,23 @@ const AddPaymentMethod = ({ navigation }: any) => {
         <View style={styles.halfInputContainer}>
           <Text style={styles.label}>CVC</Text>
           <TextInput
-            style={styles.input}
+            style={[styles.input, errors.cvv && styles.inputError]}
             keyboardType="number-pad"
             value={cvv}
             onChangeText={setCvv}
             placeholder="000"
             secureTextEntry
+            placeholderTextColor="#888"
+            maxLength={3} // Limit input to 3 digits
           />
+          {errors.cvv && <Text style={styles.errorText}>{errors.cvv}</Text>}
         </View>
       </View>
       <View style={styles.saveCardContainer}>
         <Switch value={saveCard} onValueChange={setSaveCard} trackColor={{ false: '#ddd', true: '#007AFF' }} thumbColor={saveCard ? '#007AFF' : '#888'} />
         <Text style={styles.saveCardText}>Save Card Information</Text>
       </View>
-      <TouchableOpacity style={styles.addButton}>
+      <TouchableOpacity style={styles.addButton} onPress={handleAddCard}>
         <Text style={styles.addButtonText}>Add Card</Text>
       </TouchableOpacity>
     </View>
@@ -131,6 +185,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     fontSize: 16,
   },
+  inputError: {
+    borderColor: '#ff4d4d',
+  },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -158,5 +215,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  errorText: {
+    color: '#ff4d4d',
+    fontSize: 12,
+    marginTop: -5,
+    marginBottom: 10,
   },
 });

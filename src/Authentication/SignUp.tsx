@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faFacebook, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 GoogleSignin.configure({
   webClientId: '1:49534814437:android:5d5c919dfbb6173b9f6c0c',
@@ -34,9 +36,18 @@ const SignUp = ({ navigation }: { navigation: any }) => {
       const { idToken } = await GoogleSignin.signIn();
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
       await auth().signInWithCredential(googleCredential);
+      Alert.alert('Success', 'Signed up with Google successfully');
     } catch (error: any) {
       Alert.alert('Google Sign-Up Error', error.message);
     }
+  };
+
+  const handleGitHubLogin = () => {
+    Alert.alert('GitHub Login', 'GitHub login functionality coming soon!');
+  };
+
+  const handleFacebookLogin = () => {
+    Alert.alert('Facebook Login', 'Facebook login functionality coming soon!');
   };
 
   return (
@@ -77,9 +88,17 @@ const SignUp = ({ navigation }: { navigation: any }) => {
         <Text style={styles.signUpButtonText}>Sign Up</Text>
       </TouchableOpacity>
       <Text style={styles.orText}>OR</Text>
-      <TouchableOpacity style={styles.socialButton} onPress={handleGoogleSignUp}>
-        <Text style={styles.socialButtonText}>Sign Up with Google</Text>
-      </TouchableOpacity>
+      <View style={styles.socialButtonsContainer}>
+        <TouchableOpacity style={styles.socialButton} onPress={handleGoogleSignUp}>
+          <FontAwesomeIcon icon={faGoogle} size={40} style={styles.socialIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.socialButton} onPress={handleGitHubLogin}>
+          <FontAwesomeIcon icon={faGithub} size={40} style={styles.socialIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.socialButton} onPress={handleFacebookLogin}>
+          <FontAwesomeIcon icon={faFacebook} size={40} style={styles.socialIcon} />
+        </TouchableOpacity>
+      </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>Already have an account?</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
@@ -97,6 +116,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f5f5f5',
     padding: 20,
+  },
+  socialButtonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '60%',
+    marginBottom: 20,
+  },
+  socialButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: 'transparent',
+  },
+  socialIcon: {
+    color: '#aaa',
   },
   title: {
     fontSize: 32,
@@ -132,19 +167,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#aaa',
     marginVertical: 20,
-  },
-  socialButton: {
-    backgroundColor: '#DB4437',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 10,
-    width: '100%',
-    alignItems: 'center',
-  },
-  socialButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   footer: {
     flexDirection: 'row',

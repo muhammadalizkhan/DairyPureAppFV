@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, TextInput, FlatList } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, TextInput, FlatList, Alert } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 
@@ -27,12 +27,13 @@ const Address = ({ navigation }: any) => {
     setView('list');
     setSelectedAddress(null);
     setFormState({ id: '', name: '', address: '' });
+    Alert.alert('Success', 'Your address is saved');
   };
 
   const renderList = () => (
     <View style={styles.container}>
       <View style={styles.header}>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <FontAwesomeIcon icon={faChevronLeft} size={24} color="#007AFF" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Your Address</Text>
@@ -117,19 +118,41 @@ const Address = ({ navigation }: any) => {
         <TextInput 
           style={styles.input} 
           placeholder="Name" 
+          placeholderTextColor="#49243E"
           value={formState.name}
           onChangeText={(text) => setFormState({ ...formState, name: text })}
         />
         <TextInput 
           style={styles.input} 
           placeholder="Address" 
+          placeholderTextColor="#49243E"
           value={formState.address}
           onChangeText={(text) => setFormState({ ...formState, address: text })}
         />
-        <TextInput style={styles.input} placeholder="Street 1" />
-        <TextInput style={styles.input} placeholder="Street 2" />
-        <TextInput style={styles.input} placeholder="Near Points" />
-        <TextInput style={styles.input} placeholder="Phone Number" />
+        <TextInput 
+          style={styles.input} 
+          placeholder="Street 1" 
+          placeholderTextColor="#49243E"
+          onChangeText={() => {}}
+        />
+        <TextInput 
+          style={styles.input} 
+          placeholder="Street 2" 
+          placeholderTextColor="#49243E"
+          onChangeText={() => {}}
+        />
+        <TextInput 
+          style={styles.input} 
+          placeholder="Near Points" 
+          placeholderTextColor="#49243E"
+          onChangeText={() => {}}
+        />
+        <TextInput 
+          style={styles.input} 
+          placeholder="Phone Number" 
+          placeholderTextColor="#49243E"
+          onChangeText={() => {}}
+        />
 
         <TouchableOpacity style={styles.button} onPress={handleSave}>
           <Text style={styles.buttonText}>{selectedAddress ? 'Update Address' : 'Save Address'}</Text>
@@ -171,13 +194,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   input: {
-    height: 40,
-    borderColor: 'black',
     borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 15,
+    borderColor: '#ddd',
+    borderRadius: 10,
+    padding: 15,
+    marginVertical: 5,
+    backgroundColor: '#fff',
     fontSize: 16,
+    color: '#49243E', // Set the text color
   },
   button: {
     backgroundColor: '#007AFF',

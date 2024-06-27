@@ -1,70 +1,51 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-
-type FloatingLabelInputProps = {
-  label: string;
-  value: string;
-  onChangeText: (text: string) => void;
-  placeholder: string;
-  keyboardType?: 'default' | 'email-address' | 'phone-pad';
-};
-
-const FloatingLabelInput: React.FC<FloatingLabelInputProps> = ({
-  label,
-  value,
-  onChangeText,
-  placeholder,
-  keyboardType = 'default',
-}) => {
-  const [isFocused, setIsFocused] = useState(false);
-
-  return (
-    <View style={styles.inputContainer}>
-      <Text style={[styles.label, isFocused || value ? styles.labelFocused : null]}>{label}</Text>
-      <TextInput
-        style={[styles.input, isFocused ? styles.inputFocused : null]}
-        value={value}
-        onChangeText={onChangeText}
-        placeholder={isFocused ? '' : placeholder}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        keyboardType={keyboardType}
-      />
-    </View>
-  );
-};
+import FloatingLabelInput from '../Components/FloatingLabelInput';
 
 const RegisterFarm: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [businessType, setBusinessType] = useState('Cattle Farm');
-  const [countryCode, setCountryCode] = useState('');
+  const [countryCode, setCountryCode] = useState('+92');
   const [phoneNumber, setPhoneNumber] = useState('');
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  const validateEmail = (email: string) => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  };
 
   const handleRegister = () => {
     const newErrors: { [key: string]: string } = {};
     if (!firstName) newErrors.firstName = 'Field cannot be blank.';
     if (!lastName) newErrors.lastName = 'Field cannot be blank.';
     if (!email) newErrors.email = 'Field cannot be blank.';
+    if (email && !validateEmail(email)) newErrors.email = 'Invalid email format.';
     if (!countryCode) newErrors.countryCode = 'Field cannot be blank.';
     if (!phoneNumber) newErrors.phoneNumber = 'Field cannot be blank.';
+    if (phoneNumber && !/^\d{10}$/.test(phoneNumber)) newErrors.phoneNumber = 'Phone number must be 10 digits.';
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      console.log({
-        firstName,
-        lastName,
-        email,
-        businessType,
-        countryCode,
-        phoneNumber,
-      });
+      // Simulating registration success
+      Alert.alert(
+        'Success',
+        'Team Dairy Pure will contact you in 1-2 working days.',
+        [
+          {
+            text: 'OK',
+            onPress: () => {
+              navigation.goBack(); // Navigate back after OK is pressed
+            },
+          },
+        ],
+        { cancelable: false }
+      );
     }
   };
 
@@ -77,9 +58,7 @@ const RegisterFarm: React.FC<{ navigation: any }> = ({ navigation }) => {
         <Text style={styles.headerTitle}>Register Farm</Text>
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}>
-          Boost your revenue with Dairy Pure
-        </Text>
+        <Text style={styles.title}>Boost your revenue with Dairy Pure</Text>
         <Text style={styles.subtitle}>
           Sign up now and start earning more with the leading food delivery service DairyPure.
         </Text>
@@ -115,7 +94,7 @@ const RegisterFarm: React.FC<{ navigation: any }> = ({ navigation }) => {
           <View style={styles.inputRow}>
             <View style={styles.countryCodeContainer}>
               <FloatingLabelInput
-                label=""
+                label="Country Code"
                 value={countryCode}
                 onChangeText={setCountryCode}
                 placeholder="Code"
@@ -125,7 +104,7 @@ const RegisterFarm: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
             <View style={styles.phoneNumberContainer}>
               <FloatingLabelInput
-                label=""
+                label="Phone Number"
                 value={phoneNumber}
                 onChangeText={setPhoneNumber}
                 placeholder="Phone Number"
@@ -165,6 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#000',
+    textAlign: 'center',
   },
   title: {
     fontSize: 30,
@@ -209,6 +189,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     backgroundColor: '#fff',
     fontSize: 16,
+    color: '#000', // Text color
   },
   inputFocused: {
     borderColor: '#007AFF',
@@ -219,20 +200,15 @@ const styles = StyleSheet.create({
     top: 15,
     fontSize: 16,
     color: '#999',
+    backgroundColor: '#fff',
+    paddingHorizontal: 5,
+    zIndex: 1,
   },
   labelFocused: {
     top: -10,
     left: 10,
     fontSize: 12,
     color: '#007AFF',
-  },
-  picker: {
-    height: 50,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 10,
-    marginBottom: 15,
-    backgroundColor: '#fff',
   },
   inputRow: {
     flexDirection: 'row',
