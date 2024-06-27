@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, View, Image, Text, FlatList, TouchableOpacity, Pressable } from 'react-native';
 import { TopBakeries, topbakeries } from '../Data/data';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faLocationCrosshairs, faMoneyBill, faMotorcycle, faStar } from '@fortawesome/free-solid-svg-icons';
 
-const TopBarkiers = () => {
+const TopBarkiers = ({navigation}: any) => {
   const renderItem = ({ item }: { item: TopBakeries }) => (
-    <TouchableWithoutFeedback>
+    <Pressable onPress={() => navigation.navigate('BarkeryInfo')}>
       <View style={styles.slide}>
         <Image style={styles.img} source={item.image} />
         <View style={styles.titleBody}>
@@ -46,7 +46,7 @@ const TopBarkiers = () => {
           </View>
         </View>
       </View>
-    </TouchableWithoutFeedback>
+    </Pressable>
   );
 
   return (

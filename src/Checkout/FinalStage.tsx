@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
   },
   Estimate: {
     fontSize: 15,
+    color: '#49243E',
   },
   DeliveryTime:{
     alignItems: 'center',

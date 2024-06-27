@@ -6,15 +6,17 @@ import BakereyHome from '../Components/BakereyHome'
 import TopBarkiers from '../Components/TopBarkiers'
 import GetRegister from '../Components/GetRegister'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import {useNavigation } from '@react-navigation/native'
 
 const Bakery = () => {
-  return (
+  const navigation = useNavigation();
+ return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
       <BakeryHeader />
       <SearchBar />
       <BakereyHome />
-      <TopBarkiers />
+      <TopBarkiers  navigation={navigation}/>
       </ScrollView>
     </SafeAreaView>
   )

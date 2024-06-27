@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     marginBottom: 40,
-    color: '#333',
+    color: 'black',
     fontWeight: 'bold',
   },
   input: {

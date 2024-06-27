@@ -262,7 +262,7 @@ export type QuantityPrice = {
     quantity: string;
     eachprice: string;
   };
-  export type Product = {
+export type Product = {
     id: number;
     name: string;
     image: any;
@@ -270,8 +270,7 @@ export type QuantityPrice = {
     catagoery: string;
     price: string;
     quantities: QuantityPrice[];
-  };
-  
+};
   const products: Product[] = [
     {
       id: 1,
@@ -709,6 +708,10 @@ const topbakeries: TopBakeries[] = [
         location: 'Lahore',
     },
 ]
+export type BQuantityPrice = {
+  quantity: string;
+  eachprice: string;
+};
 export type BakriesProducts = {
     id: number;
     name: string;
@@ -716,7 +719,7 @@ export type BakriesProducts = {
     price: any;
     location: any;
     catagoery: any;
-    quantities: QuantityPrice[];
+    quantities: BQuantityPrice[];
 
 };
 const bakriesProducts: BakriesProducts[] = [
@@ -746,7 +749,6 @@ const bakriesProducts: BakriesProducts[] = [
         { quantity: 'Espresso', eachprice: 'Rs.900' },
         { quantity: 'Latie', eachprice: 'Rs.1300' },
         { quantity: 'Mocha', eachprice: 'Rs.1700' },
-        { quantity: 'Roma', eachprice: 'Rs.2100' },
       ],
     },
     {
@@ -761,7 +763,6 @@ const bakriesProducts: BakriesProducts[] = [
         { quantity: 'Orange', eachprice: 'Rs.900' },
         { quantity: 'Pogment', eachprice: 'Rs.300' },
         { quantity: 'Juice Apple', eachprice: 'Rs.700' },
-        { quantity: 'Pine', eachprice: 'Rs.400' },
       ],
     },
     {
@@ -862,5 +863,20 @@ const bakriesProducts: BakriesProducts[] = [
         { quantity: '4KG', eachprice: 'Rs.3200' },
       ],
     },
+    {
+      id: 11,
+      name: 'Pastry',
+      price: 'From Rs.500',
+      location: 'Lahore',
+      catagoery: 'Cattel Farm Organic Production',
+      image: require('../assets/Images/tarts.jpg'),
+    quantities: [
+      { quantity: '1 Piece', eachprice: 'Rs.600' },
+      { quantity: '2 Piece', eachprice: 'Rs.700' },
+      { quantity: '3 Piece', eachprice: 'Rs.1300' },
+      { quantity: '4 Piece', eachprice: 'Rs.3200' },
+    ],
+  },
+
 ]
 export { cattleFarms, topCattelFarms, cattleFarmsNearYou, bakeries, topbakeries, bakeriesNearYou, bakriesProducts, products, category };

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Home from './src/Home/Home';
 import Farm from './src/Farm/Farm';
 import Bakery from './src/Bakery/Bakery';
@@ -32,33 +31,18 @@ import Setting from './src/DrawerContent/Setting';
 import TermsAndConditions from './src/DrawerContent/TermsAndConditions';
 import UserGuidance from './src/DrawerContent/UserGuidance';
 import FarmHeader from './src/Farm/FarmHeader';
-import AppBody from './src/Components/AppBody'
-import AppProducts from './src/Components/AppProducts'
-import BakereyHome from './src/Components/BakereyHome'
-import BestChoice from './src/Components/BestChoice'
-import Catagoery from './src/Components/Catagoery'
-import DairyProducts from './src/Components/DairyProducts'
-import Discount from './src/Components/Discount'
-import EditCardDetails from './src/Components/EditCardDetails'
-import Login from './src/Authentication/Login';
-import SignUp from './src/Authentication/SignUp';
-import OTP from './src/Authentication/OTP';
-import ForgotPass from './src/Authentication/ForgotPass';
+import AppBody from './src/Components/AppBody';
+import AppProducts from './src/Components/AppProducts';
+import BakereyHome from './src/Components/BakereyHome';
+import BestChoice from './src/Components/BestChoice';
+import Catagoery from './src/Components/Catagoery';
+import DairyProducts from './src/Components/DairyProducts';
+import Discount from './src/Components/Discount';
+import EditCardDetails from './src/Components/EditCardDetails';
+import BarkeryInfo from './src/Bakery/BarkeryInfo';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
-const AuthStack = createNativeStackNavigator();
-
-const AuthStackNavigator = () => {
-  return (
-    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
-      <AuthStack.Screen name="Login" component={Login} />
-      <AuthStack.Screen name="SignUp" component={SignUp} />
-      <AuthStack.Screen name="ForgotPass" component={ForgotPass} />
-      <AuthStack.Screen name="OTP" component={OTP} />
-    </AuthStack.Navigator>
-  );
-};
 
 const StackNavigator = () => {
   return (
@@ -73,6 +57,7 @@ const StackNavigator = () => {
       <Stack.Screen name="Bakery" component={Bakery} />
       <Stack.Screen name="BakeryHeader" component={BakeryHeader} />
       <Stack.Screen name="BakeryProducts" component={BarkeryProducts} />
+      <Stack.Screen name='BarkeryInfo' component={BarkeryInfo} />
       <Stack.Screen name="Products" component={Products} />
       <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="Checkout" component={Checkout} />
@@ -89,6 +74,7 @@ const StackNavigator = () => {
     </Stack.Navigator>
   );
 };
+
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
@@ -115,19 +101,9 @@ const DrawerNavigator = () => {
 };
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const userToken = await AsyncStorage.getItem('userToken');
-      setIsAuthenticated(!!userToken);
-    };
-    checkAuth();
-  }, []);
-
   return (
     <NavigationContainer>
-      {isAuthenticated ? <DrawerNavigator /> : <AuthStackNavigator />}
+      <DrawerNavigator />
     </NavigationContainer>
   );
 };

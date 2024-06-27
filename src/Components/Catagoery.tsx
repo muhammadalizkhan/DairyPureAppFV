@@ -4,7 +4,7 @@ import { category } from '../Data/data';
 
 const Catagoery = () => {
   const renderProducts = () => {
-    const rowProducts = category.slice(0, productsPerRow); // Slice only the first rowProducts
+    const rowProducts = category.slice(0, productsPerRow);
     const rowElements = rowProducts.map((product) => (
       <View style={styles.product} key={product.id}>
         <Image style={styles.productImage} source={product.image} />
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#49243E',    
   },
 });
 

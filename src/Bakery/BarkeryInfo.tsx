@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faClockRotateLeft, faHeart, faMagnifyingGlass, faPlus, faStar, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { Product, QuantityPrice, products } from '../Data/data';
+import { BakriesProducts, bakriesProducts, BQuantityPrice } from '../Data/data';
 
 const BarkeryInfo = ({ navigation }: any) => {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [selectedQuantity, setSelectedQuantity] = useState<QuantityPrice | null>(null);
-  const [cart, setCart] = useState<{ product: Product, quantityPrice: QuantityPrice }[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<BakriesProducts | null>(null);
+  const [selectedQuantity, setSelectedQuantity] = useState<BQuantityPrice | null>(null);
+  const [cart, setCart] = useState<{ product: BakriesProducts, quantityPrice: BQuantityPrice }[]>([]);
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (product: BakriesProducts) => {
     setSelectedProduct(product);
     setSelectedQuantity(product.quantities[0]);
   };
@@ -110,7 +110,7 @@ const BarkeryInfo = ({ navigation }: any) => {
 const BarkeryProducts = ({ handleAddToCart }: any) => {
   return (
     <View style={styles.productsContainer}>
-      {products.slice(0, 4).map((product) => (
+      {bakriesProducts.slice(0, 4).map((product) => (
         <View key={product.id} style={styles.productContainer}>
           <View style={styles.imageContainer}>
             <Image source={product.image} style={styles.image} />
@@ -135,7 +135,7 @@ const BarkeryProducts = ({ handleAddToCart }: any) => {
 const OtherProducts = ({ handleAddToCart }: any) => {
   return (
     <View style={styles.otherProductsContainer}>
-      {products.slice(5, 11).map((product) => (
+      {bakriesProducts.slice(5, 11).map((product) => (
         <View key={product.id} style={styles.otherProductContainer}>
           <Image source={product.image} style={styles.otherProductImage} />
           <View style={styles.otherProductOverlay}>

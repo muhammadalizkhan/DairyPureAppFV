@@ -99,27 +99,27 @@ const Checkout = ({navigation}: any) => {
             <Text style={styles.summaryTitle}>Order Summary</Text>
             <View style={styles.summaryItem}>
               <View style={styles.productInfo}>
-                <Text>2kg Butter</Text>
-                <Text>Rs. 2300.0</Text>
+                <Text style={styles.producttext}>2kg Butter</Text>
+                <Text style={styles.producttext}>Rs. 2300.0</Text>
               </View>
             </View>
             <View style={styles.line} />
             <View style={styles.summaryItem}>
               <View style={styles.productInfo}>
-                <Text>SubTotal</Text>
-                <Text>Rs.2300.54</Text>
+                <Text style={styles.producttext}>SubTotal</Text>
+                <Text style={styles.producttext}>Rs.2300.54</Text>
               </View>
               <View style={styles.productInfo}>
-                <Text>Delivery Chagres</Text>
-                <Text>Rs. 250</Text>
+                <Text style={styles.producttext}>Delivery Chagres</Text>
+                <Text style={styles.producttext}>Rs. 250</Text>
               </View>
               <View style={styles.productInfo}>
-                <Text>Platform Fee</Text>
-                <Text>Rs. 500</Text>
+                <Text style={styles.producttext}>Platform Fee</Text>
+                <Text style={styles.producttext}>Rs. 500</Text>
               </View>
               <View style={styles.productInfo}>
-                <Text>Overall 3 Products</Text>
-                <Text>Total Amount 3000</Text>
+                <Text style={styles.producttext}>Overall 3 Products</Text>
+                <Text style={styles.producttext}>Total Amount 3000</Text>
               </View>
             </View>
           </View>
@@ -127,7 +127,7 @@ const Checkout = ({navigation}: any) => {
         </ScrollView>
           <View style={styles.footer}>
             <View>
-              <Text style={styles.proceedButtonText}>Total Price (incl VAT): RS-3000</Text>
+              <Text style={styles.proceedButtonText}>Total Price (incl): RS-3000</Text>
               <Text style={styles.proceedButtonText}>Total Discount: RS-500</Text>
             </View>
             <TouchableOpacity  
@@ -148,6 +148,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f3f3f3',
+  },
+  producttext:{
+    color: '#49243E',
   },
   Cash: {
     marginLeft: 8,

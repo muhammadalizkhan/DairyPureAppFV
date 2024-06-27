@@ -6,7 +6,7 @@ import FarmNearYou from '../Components/FarmNearYou'
 import SearchBar from '../Components/SearchBar'
 import AppProducts from '../Components/AppProducts'
 import TopFarms from './TopFarms'
-import { ThemeProvider, useNavigation } from '@react-navigation/native'
+import {useNavigation } from '@react-navigation/native'
 import GetRegister from '../Components/GetRegister'
 
 const Farm = () => {

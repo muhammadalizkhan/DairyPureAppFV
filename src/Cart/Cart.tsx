@@ -59,11 +59,11 @@ const Cart = ({ navigation, route }: any) => {
             <FontAwesomeIcon style={styles.deliveryIcon} icon={faClockRotateLeft} />
           </View>
           <View style={styles.time}>
-            <Text>Estimate Delivery Time</Text>
-            <Text>Now (30-40min)</Text>
+            <Text style={styles.CartText}>Estimate Delivery Time</Text>
+            <Text style={styles.CartText} >Now (30-40min)</Text>
           </View>
           <TouchableOpacity onPress={() => console.log('Change delivery time clicked')}>
-            <Text>Change</Text>
+            <Text style={styles.CartText}>Change</Text>
           </TouchableOpacity>
         </View>
         <ScrollView>
@@ -100,7 +100,7 @@ const Cart = ({ navigation, route }: any) => {
       </View>
       <View style={styles.footer}>
         <View>
-          <Text style={styles.footerText}>Total Price (incl VAT): RS-{calculateTotalPrice()}</Text>
+          <Text style={styles.footerText}>Total (incl VAT): RS-{calculateTotalPrice()}</Text>
           <Text style={styles.footerText}>Total Discount: RS-{totalDiscount}</Text>
         </View>
         <TouchableOpacity
@@ -120,6 +120,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f3f3f3',
+  },
+  CartText:{
+    color: '#49243E',
   },
   content: {
     flex: 1,
