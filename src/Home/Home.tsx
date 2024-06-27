@@ -24,7 +24,7 @@ const Home = () => {
             <Catagoery />
             <BestChoice />
             <Discount />
-            <TopBarkiers />
+            <TopBarkiers navigation={navigation} />
             <GetRegister />
            </ScrollView>
     </GestureHandlerRootView>

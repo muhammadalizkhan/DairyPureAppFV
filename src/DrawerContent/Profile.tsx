@@ -215,6 +215,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginTop: 10,
+    color: '#49243E',
   },
   infoContainer: {
     padding: 20,
@@ -227,7 +228,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 16,
-    color: '#888',
+    color: '#49243E',
   },
   value: {
     fontSize: 16,
